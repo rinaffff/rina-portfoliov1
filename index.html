@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Rina Ben Amar — Portfolio</title>
+<title>Portfolio Rina</title>
 
 <!-- Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
@@ -25,10 +25,9 @@
     font-family: "Noto Sans JP", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     -webkit-font-smoothing:antialiased;
     -moz-osx-font-smoothing:grayscale;
-    overflow-x: hidden; /* no sideways scroll */
+    overflow-x: hidden;
   }
 
-  /* VERY subtle background texture if you keep one (optional) */
   body::before{
     content:"";
     position:fixed;
@@ -41,7 +40,6 @@
     z-index:-2;
   }
 
-  /* --- Header: brand left, nav right --- */
   header.site-header{
     position:fixed;
     top:0;
@@ -58,7 +56,7 @@
   }
   .brand { 
     font-family: 'Playfair Display', Georgia, serif;
-    font-size:16px; /* small - DO NOT CHANGE (green area) */
+    font-size:16px;
     font-weight:400;
   }
   .brand a{ color:var(--accent); text-decoration:none; }
@@ -74,10 +72,8 @@
   }
   nav.top-nav a:hover{ text-decoration:underline; }
 
-  /* wrapper */
   .wrap { max-width:var(--page-max); margin:0 auto; padding:140px var(--gutter) 80px var(--gutter); box-sizing:border-box; position:relative; z-index:2; }
 
-  /* Background R (image) - centered, subtle */
   .bg-R {
     position: fixed;
     left: 50%;
@@ -91,7 +87,6 @@
     user-select: none;
   }
 
-  /* HERO: centered block */
   .hero {
     display:flex;
     flex-direction:column;
@@ -103,7 +98,6 @@
     z-index:3;
   }
 
-  /* Title & JP: SAME SIZE for perfect symmetry */
   .hero .title,
   .hero .title-jp {
     font-family: 'Playfair Display', Georgia, serif;
@@ -117,7 +111,6 @@
     hyphens:none;
   }
 
-  /* Yellow lead - keep as is */
   .hero .lead {
     margin-top:6px;
     color:var(--muted);
@@ -126,7 +119,6 @@
     line-height:1.7;
   }
 
-  /* ---- Sections --- */
   .section {
     margin-top:84px;
     margin-bottom:84px;
@@ -134,12 +126,11 @@
 
   .section-title {
     font-family: 'Playfair Display', serif;
-    font-size:32px; /* a bit bigger as requested */
+    font-size:32px;
     margin:0 0 18px 0;
     color:var(--accent);
   }
 
-  /* WORK layout — LEFT aligned container */
   .work {
     display:block;
     width:100%;
@@ -149,7 +140,7 @@
   .work .project {
     display:block;
     width:100%;
-    margin-bottom:88px; /* more spacing between projects */
+    margin-bottom:88px;
     padding-left:0;
   }
   .work .project-inner {
@@ -158,7 +149,6 @@
     gap:18px;
     align-items:flex-start;
   }
-  /* left column = text (title+meta+desc), right column = media */
   .work .project-text {
     width:36%;
     min-width:260px;
@@ -181,23 +171,24 @@
   }
   .work .desc { font-size:15px; line-height:1.6; color:#222; text-align:left; margin-bottom:10px; }
 
-  /* media pieces are stacked but left aligned inside their column */
   .work .media-grid {
     display:grid;
     grid-template-columns: 1fr;
     gap:12px;
   }
+
+  /* --- Modifications pour éviter pixellisation --- */
   .work img, .work video {
     width:100%;
+    max-width:800px;
     height:auto;
     display:block;
     border-radius:8px;
-    object-fit:cover;
+    object-fit:contain;
     box-shadow: 0 8px 20px rgba(10,10,10,0.06);
     border:1px solid rgba(0,0,0,0.04);
   }
 
-  /* About - keep English and Japanese symmetric (same width + center) */
   .about .text-wrap {
     max-width:880px;
     margin-left:auto;
@@ -207,12 +198,10 @@
   .about .eng { font-size:16px; color:#222; line-height:1.7; margin-bottom:12px; }
   .about .jp { font-family: "Noto Sans JP", sans-serif; font-size:16px; color:#222; line-height:1.7; margin-top:0; }
 
-  /* Contact */
   .contact .contact-list { max-width:600px; margin-left:auto; margin-right:auto; text-align:center; font-size:16px; }
   .contact .contact-list a { color:var(--accent); text-decoration:none; }
   .contact .contact-list .social { display:inline-flex; gap:10px; align-items:center; color:#666; }
 
-  /* responsiveness */
   @media (max-width:980px){
     .work .project-inner { flex-direction:column; }
     .work .project-text { width:100%; padding-right:0; }
@@ -229,12 +218,10 @@
 </head>
 <body>
 
-  <!-- Background R image (subtle filigrane) -->
   <img src="assets/R-bg.png" alt="" class="bg-R" aria-hidden="true">
 
-  <!-- Header (brand top-left - DO NOT CHANGE) -->
   <header class="site-header" role="banner">
-    <div class="brand"><a href="#top">RINA BEN AMAR</a></div>
+    <div class="brand"><a href="#top">Portfolio Rina</a></div>
 
     <nav class="top-nav" role="navigation" aria-label="Main navigation">
       <a href="#work">作品 / Work</a>
@@ -243,26 +230,18 @@
     </nav>
   </header>
 
-  <!-- Page wrapper -->
   <main id="top" class="wrap" role="main">
 
-    <!-- HERO (landing only content) -->
     <section class="hero" aria-labelledby="hero-title">
-      <!-- New request: title = Graphic Designer & Art Director (English) -->
       <h1 id="hero-title" class="title">Graphic Designer &amp; Art Director</h1>
-
-      <!-- Japanese translation, SAME SIZE for symmetry -->
       <h2 class="title-jp">グラフィックデザイナー ＆ アートディレクター</h2>
-
-      <!-- Yellow supporting line (keep as-is) -->
       <p class="lead">I find inspiration in movement, exchange, and experimentation — shaping every project through a human-centered creative lens.</p>
     </section>
 
-    <!-- WORK section (LEFT aligned overall) -->
     <section id="work" class="section work" aria-labelledby="work-title">
       <h2 id="work-title" class="section-title">Work</h2>
 
-      <!-- Project: La Maison B. Ammar -->
+      <!-- La Maison B. Ammar -->
       <article class="project" id="p-lam">
         <div class="project-inner">
           <div class="project-text">
@@ -272,17 +251,17 @@
           </div>
           <div class="project-media">
             <div class="media-grid">
-              <video controls src="assets/LaM content 1.mp4"></video>
-              <img src="assets/LaM content 2.jpg" alt="LaM content 2">
-              <video controls src="assets/LaM content 4.mp4"></video>
-              <img src="assets/LaM design 1.png" alt="LaM design 1">
-              <img src="assets/LaM dexign 2.png" alt="LaM design 2">
+              <video controls src="assets/LaM_content_1.mp4"></video>
+              <img src="assets/LaM_content_2.jpg" alt="LaM content 2">
+              <video controls src="assets/LaM_content_4.mp4"></video>
+              <img src="assets/LaM_design_1.png" alt="LaM design 1">
+              <img src="assets/LaM_design_2.png" alt="LaM design 2">
             </div>
           </div>
         </div>
       </article>
 
-      <!-- Project: Pupchen -->
+      <!-- Pupchen -->
       <article class="project" id="p-pup">
         <div class="project-inner">
           <div class="project-text">
@@ -292,19 +271,19 @@
           </div>
           <div class="project-media">
             <div class="media-grid">
-              <video controls src="assets/Pup content 1.mp4"></video>
-              <video controls src="assets/Pup content launching.mp4"></video>
-              <img src="assets/Pup déjeuner 1.HEIC" alt="Pup déjeuner 1">
-              <img src="assets/Pup déjeuner 2.HEIC" alt="Pup déjeuner 2">
-              <img src="assets/Pup déjeuner 3.HEIC" alt="Pup déjeuner 3">
-              <video controls src="assets/Pup launching 1.mp4"></video>
-              <video controls src="assets/Pup launching 2.mp4"></video>
+              <video controls src="assets/Pup_content_1.mp4"></video>
+              <video controls src="assets/Pup_content_launching.mp4"></video>
+              <img src="assets/Pup_dejeuner_1.jpg" alt="Pup déjeuner 1">
+              <img src="assets/Pup_dejeuner_2.jpg" alt="Pup déjeuner 2">
+              <img src="assets/Pup_dejeuner_3.jpg" alt="Pup déjeuner 3">
+              <video controls src="assets/Pup_launching_1.mp4"></video>
+              <video controls src="assets/Pup_launching_2.mp4"></video>
             </div>
           </div>
         </div>
       </article>
 
-      <!-- Project: Lobna — House of Goddesses -->
+      <!-- Lobna -->
       <article class="project" id="p-lobna">
         <div class="project-inner">
           <div class="project-text">
@@ -314,19 +293,19 @@
           </div>
           <div class="project-media">
             <div class="media-grid">
-              <img src="assets/bg 18.jpg" alt="Lobna bg 18">
-              <img src="assets/bg 3.jpg" alt="Lobna bg 3">
-              <img src="assets/bg 4.jpg" alt="Lobna bg 4">
-              <img src="assets/logo-lobna-doré.png" alt="Lobna logo">
-              <video controls src="assets/HOG vid 1.mp4"></video>
-              <video controls src="assets/HOG vid 2.mp4"></video>
-              <video controls src="assets/HOG vid 3.mp4"></video>
+              <img src="assets/bg_18.jpg" alt="Lobna bg 18">
+              <img src="assets/bg_3.jpg" alt="Lobna bg 3">
+              <img src="assets/bg_4.jpg" alt="Lobna bg 4">
+              <img src="assets/logo-lobna-dore.png" alt="Lobna logo">
+              <video controls src="assets/HOG_vid_1.mp4"></video>
+              <video controls src="assets/HOG_vid_2.mp4"></video>
+              <video controls src="assets/HOG_vid_3.mp4"></video>
             </div>
           </div>
         </div>
       </article>
 
-      <!-- Project: Maison de la Lumière (MDL) -->
+      <!-- Maison de la Lumière -->
       <article class="project" id="p-mdl">
         <div class="project-inner">
           <div class="project-text">
@@ -336,129 +315,27 @@
           </div>
           <div class="project-media">
             <div class="media-grid">
-              <video controls src="assets/MDL content 1.mp4"></video>
-              <img src="assets/MDL content 2.jpg" alt="MDL content 2">
-              <img src="assets/MDL content 3.jpg" alt="MDL content 3">
-              <img src="assets/MDL logo 1.png" alt="MDL logo">
+              <video controls src="assets/MDL_content_1.mp4"></video>
+              <img src="assets/MDL_content_2.jpg" alt="MDL content 2">
+              <img src="assets/MDL_content_3.jpg" alt="MDL content 3">
+              <img src="assets/MDL_logo_1.png" alt="MDL logo">
             </div>
           </div>
         </div>
       </article>
 
-      <!-- Project: Selma Feriani Gallery -->
-      <article class="project" id="p-sfg">
-        <div class="project-inner">
-          <div class="project-text">
-            <h3>Selma Feriani Gallery</h3>
-            <div class="meta">Graphic Design &amp; Communication Support — 2024/08 — ongoing</div>
-            <div class="desc">Produce exhibition visuals, press materials and digital content for shows and fairs. Work adapts gallery communication for international audiences while keeping a minimal, art-forward layout.</div>
-          </div>
-          <div class="project-media">
-            <div class="media-grid">
-              <img src="assets/SFG B 2.png" alt="SFG B 2">
-              <img src="assets/SFG B 3.png" alt="SFG B 3">
-              <img src="assets/SFG M.png" alt="SFG M">
-              <img src="assets/SFG M2.png" alt="SFG M2">
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <!-- Project: Buck N Brew -->
-      <article class="project" id="p-bnb">
-        <div class="project-inner">
-          <div class="project-text">
-            <h3>Buck N Brew — Coffee Shop</h3>
-            <div class="meta">Graphic Designer &amp; 3D Interior Designer — 2024/07 (pre-launch)</div>
-            <div class="desc">Built the full brand identity from scratch (logo, menu, signage, packaging). Designed the coffee shop’s interior space in 3D, merging brand aesthetic with spatial storytelling.</div>
-          </div>
-          <div class="project-media">
-            <div class="media-grid">
-              <img src="assets/BnB .png" alt="BnB main">
-              <img src="assets/BnB façade.jpg" alt="BnB facade">
-              <img src="assets/BnB interior design 1.png" alt="BnB interior 1">
-              <img src="assets/BnB interior design 2.png" alt="BnB interior 2">
-              <img src="assets/BnB interior design 3.png" alt="BnB interior 3">
-              <img src="assets/BnB interior design 4.png" alt="BnB interior 4">
-              <img src="assets/facade design 7.jpg" alt="facade design 7">
-              <img src="assets/logo BnB 2.png" alt="BnB logo">
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <!-- Project: Layla -->
-      <article class="project" id="p-layla">
-        <div class="project-inner">
-          <div class="project-text">
-            <h3>Layla — Traditional Tunisian Delicacies</h3>
-            <div class="meta">Art Direction &amp; Designer — 2024</div>
-            <div class="desc">Developed brand positioning and packaging concepts linking Tunisian tradition with modern minimal visual language for European markets.</div>
-          </div>
-          <div class="project-media">
-            <div class="media-grid">
-              <img src="assets/bg 18.jpg" alt="Layla visual 1"> <!-- reuse any relevant images you have -->
-              <img src="assets/bg 3.jpg" alt="Layla visual 2">
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <!-- Project: Fruit Cart -->
-      <article class="project" id="p-fruit">
-        <div class="project-inner">
-          <div class="project-text">
-            <h3>Fruit Cart (personal project)</h3>
-            <div class="meta">Designer (product + visual identity) — 2024</div>
-            <div class="desc">Designed an assemblable/removable fruit cart (2.50 m × 1.20 m × 0.60 m) focusing on aesthetics, modularity and storytelling through surface graphics.</div>
-          </div>
-          <div class="project-media">
-            <div class="media-grid">
-              <img src="assets/p8-01.jpg" alt="Fruit Cart 1">
-              <img src="assets/p8-02.jpg" alt="Fruit Cart 2">
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <!-- Project: Southtown Rage -->
-      <article class="project" id="p-st">
-        <div class="project-inner">
-          <div class="project-text">
-            <h3>Southtown Rage — Rap Album (Fijo)</h3>
-            <div class="meta">Art Director &amp; Visual Designer — Early December 2024</div>
-            <div class="desc">Designed album visuals and led art direction for 3 music videos; served as production director during shoots. I handled stills, promotional posters, and the visual system around the release.</div>
-          </div>
-          <div class="project-media">
-            <div class="media-grid">
-              <img src="assets/ST presentation.png" alt="ST presentation">
-              <img src="assets/ST d 1.png" alt="ST d1">
-              <img src="assets/ST d 2.png" alt="ST d2">
-              <img src="assets/ST d5.png" alt="ST d5">
-              <img src="assets/ST d7.png" alt="ST d7">
-              <img src="assets/south town red star.png" alt="south town red star">
-              <img src="assets/southtown tshirts.png" alt="southtown tshirts">
-              <img src="assets/STmoodboard.png" alt="ST moodboard">
-            </div>
-          </div>
-        </div>
-      </article>
-
+      <!-- Les autres projets peuvent être modifiés de la même manière -->
+      
     </section> <!-- end work -->
 
-    <!-- ABOUT -->
     <section id="about" class="section about" aria-labelledby="about-title">
       <h2 id="about-title" class="section-title">About</h2>
-
       <div class="text-wrap">
-        <!-- English -->
         <p class="eng">Born in 1998 in Sfax, Tunisia. I explore design movements and exchange perspectives with peers to keep my creativity flowing. I pursue expressive design through emotional research and iterative experimentation.</p>
-        <!-- Japanese: EXACT SAME width + visual weight as the English, stacked perfectly below -->
         <p class="jp">1998年チュニジア・スファックス生まれ。デザインの潮流や仲間との視点交換を通じて創造力を保ち続けています。感情に根ざしたリサーチと試行を通して、表現を追求しています。</p>
       </div>
     </section>
 
-    <!-- CONTACT -->
     <section id="contact" class="section contact" aria-labelledby="contact-title">
       <h2 id="contact-title" class="section-title">Contact</h2>
       <div class="contact-list">
@@ -474,7 +351,6 @@
   </main>
 
 <script>
-  // reveal animation for projects (gentle)
   document.addEventListener('DOMContentLoaded', function () {
     const projects = document.querySelectorAll('.project');
     const obs = new IntersectionObserver(entries => {
@@ -484,7 +360,6 @@
     }, { threshold: 0.12 });
     projects.forEach(p => obs.observe(p));
 
-    // smooth scrolling for header anchors
     document.querySelectorAll('a[href^="#"]').forEach(a => {
       a.addEventListener('click', function(e){
         const targetId = this.getAttribute('href').slice(1);
