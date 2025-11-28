@@ -1,253 +1,227 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Portfolio Rina</title>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --page-max: 1200px;
-      --accent: #0b0b0b;
-      --muted: #6b6b6b;
-      --bg: #ffffff;
-      --gutter: clamp(18px, 2.6vw, 36px);
-    }
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      background: var(--bg);
-      color: var(--accent);
-      font-family: "Noto Sans JP", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      overflow-x: hidden;
-    }
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background-image: url('assets/r_background.png');
-      background-size: cover;
-      background-position: center;
-      opacity: 0.04;
-      pointer-events: none;
-      z-index: -2;
-    }
-    header.site-header {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      height: 76px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 14px var(--gutter);
-      background: rgba(255,255,255,0.96);
-      z-index: 80;
-      box-shadow: 0 1px 0 rgba(0,0,0,0.03);
-    }
-    .brand { 
-      font-family: 'Playfair Display', Georgia, serif;
-      font-size: 16px;
-      font-weight: 400;
-    }
-    .brand a { color: var(--accent); text-decoration: none; }
-    nav.top-nav {
-      display: flex;
-      gap: 24px;
-      align-items: center;
-      font-size: 14px;
-    }
-    nav.top-nav a {
-      color: var(--accent);
-      text-decoration: none;
-      padding: 6px 8px;
-    }
-    nav.top-nav a:hover { text-decoration: underline; }
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Portfolio Rina</title>
 
-    .wrap {
-      max-width: var(--page-max);
-      margin: 0 auto;
-      padding: 140px var(--gutter) 80px var(--gutter);
-      box-sizing: border-box;
-      position: relative;
-      z-index: 2;
-    }
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
 
-    /* HERO + background logo */
-    .hero {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      gap: 18px;
-      padding: 40px 10px;
-      z-index: 3;
-      overflow: hidden;
-    }
-    .hero-bg-logo {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      width: min(60vw, 800px);
-      height: auto;
-      opacity: 0.03;
-      pointer-events: none;
-      z-index: 0;
-      transition: opacity 0.6s ease-in-out;
-      user-select: none;
-    }
-    .hero .title, .hero .title-jp {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-weight: 400;
-      margin: 0;
-      font-size: clamp(32px, 6.8vw, 64px);
-      line-height: 1.02;
-      color: var(--accent);
-      max-width: 92%;
-      word-break: keep-all;
-      hyphens: none;
-    }
-    .hero .lead {
-      margin-top: 6px;
-      color: var(--muted);
-      font-size: 16px;
-      max-width: 880px;
-      line-height: 1.7;
-    }
+<style>
+  :root{
+    --page-max:1200px;
+    --accent:#0b0b0b;
+    --muted:#6b6b6b;
+    --bg:#ffffff;
+    --gutter: clamp(18px, 2.6vw, 36px);
+    --media-max: 900px; /* max width for project media to avoid pixelation */
+  }
 
-    .section {
-      margin-top: 84px;
-      margin-bottom: 84px;
-    }
-    .section-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 32px;
-      margin: 0 0 18px 0;
-      color: var(--accent);
-    }
+  html,body{
+    height:100%;
+    margin:0;
+    background:var(--bg);
+    color:var(--accent);
+    font-family: "Noto Sans JP", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    overflow-x: hidden;
+  }
 
-    .work .project {
-      display: block;
-      width: 100%;
-      margin-bottom: 88px;
-    }
-    .work .project-inner {
-      display: flex;
-      flex-direction: row;
-      gap: 18px;
-      align-items: flex-start;
-    }
-    .work .project-text {
-      width: 36%;
-      min-width: 260px;
-      padding-right: 20px;
-    }
-    .work .project-media {
-      width: 64%;
-    }
-    .work .project h3 {
-      margin: 0 0 6px 0;
-      font-family: 'Playfair Display', serif;
-      font-size: 20px;
-      font-weight: 400;
-      color: var(--accent);
-      text-align: left;
-    }
-    .work .meta {
-      font-size: 13px;
-      color: var(--muted);
-      margin-bottom: 12px;
-      text-align: left;
-    }
-    .work .desc {
-      font-size: 15px;
-      line-height: 1.6;
-      color: #222;
-      text-align: left;
-      margin-bottom: 10px;
-    }
-    .work .media-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 12px;
-    }
-    .work img, .work video {
-      width: 100%;
-      max-width: 100%;
-      height: auto;
-      display: block;
-      border-radius: 8px;
-      object-fit: cover;
-      box-shadow: 0 8px 20px rgba(10,10,10,0.06);
-      border: 1px solid rgba(0,0,0,0.04);
-    }
+  /* subtle site texture */
+  body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background-image: url('assets/r_background.png');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.03;
+    pointer-events:none;
+    z-index:-2;
+  }
 
-    .about .text-wrap {
-      max-width: 880px;
-      margin-left: auto;
-      margin-right: auto;
-      text-align: center;
-    }
-    .about .eng, .about .jp {
-      font-size: 16px;
-      color: #222;
-      line-height: 1.7;
-      margin-bottom: 12px;
-    }
+  header.site-header{
+    position:fixed;
+    top:0; left:0; right:0;
+    height:76px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding: 14px var(--gutter);
+    background: rgba(255,255,255,0.96);
+    z-index:80;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.03);
+  }
+  .brand { 
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size:16px;
+    font-weight:400;
+  }
+  .brand a{ color:var(--accent); text-decoration:none; }
 
-    .contact .contact-list {
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-      text-align: center;
-      font-size: 16px;
-    }
-    .contact .contact-list a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-    .contact .contact-list .social {
-      display: inline-flex;
-      gap: 10px;
-      align-items: center;
-      color: #666;
-    }
+  nav.top-nav{
+    display:flex;
+    gap:24px;
+    align-items:center;
+    font-size:14px;
+  }
+  nav.top-nav a{
+    color:var(--accent); text-decoration:none; padding:6px 8px;
+  }
+  nav.top-nav a:hover{ text-decoration:underline; }
 
-    @media (max-width: 980px) {
-      .work .project-inner {
-        flex-direction: column;
-      }
-      .work .project-text {
-        width: 100%;
-        padding-right: 0;
-      }
-      .work .project-media {
-        width: 100%;
-      }
-      .hero .title, .hero .title-jp {
-        font-size: clamp(24px, 8vw, 40px);
-      }
-      .wrap {
-        padding: 110px 18px 60px 18px;
-      }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      * {
-        transition: none !important;
-        animation: none !important;
-      }
-    }
-  </style>
+  .wrap { max-width:var(--page-max); margin:0 auto; padding:140px var(--gutter) 80px var(--gutter); box-sizing:border-box; position:relative; z-index:2; }
+
+  /* HERO */
+  .hero {
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    gap:18px;
+    padding: 40px 10px;
+    z-index:3;
+    overflow:hidden;
+  }
+
+  /* hero background logo (very subtle) - uses same file r_background.png as requested */
+  .hero-bg-logo {
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    width:min(60vw, 700px);
+    max-width:var(--media-max);
+    opacity:0.02;
+    pointer-events:none;
+    z-index:0;
+    user-select:none;
+    transition: opacity 0.55s ease-in-out, transform 0.6s ease;
+  }
+
+  .hero .title,
+  .hero .title-jp {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight:400;
+    margin:0;
+    font-size: clamp(32px, 6.8vw, 64px);
+    line-height:1.02;
+    color:var(--accent);
+    max-width: 92%;
+    word-break: keep-all;
+    hyphens:none;
+    z-index:2;
+  }
+
+  .hero .lead {
+    margin-top:6px;
+    color:var(--muted);
+    font-size:16px;
+    max-width:880px;
+    line-height:1.7;
+    z-index:2;
+  }
+
+  .section {
+    margin-top:84px;
+    margin-bottom:84px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size:32px;
+    margin:0 0 18px 0;
+    color:var(--accent);
+  }
+
+  /* WORK layout */
+  .work { display:block; width:100%; max-width:var(--page-max); margin:0; }
+  .work .project { display:block; width:100%; margin-bottom:88px; padding-left:0; }
+  .work .project-inner { display:flex; flex-direction:row; gap:18px; align-items:flex-start; }
+  .work .project-text { width:36%; min-width:260px; padding-right:20px; }
+  .work .project-media { width:64%; }
+
+  .work .project h3{
+    margin:0 0 6px 0;
+    font-family: 'Playfair Display', serif;
+    font-size:20px;
+    font-weight:400;
+    color:var(--accent);
+    text-align:left;
+  }
+  .work .meta { font-size:13px; color:var(--muted); margin-bottom:12px; text-align:left; }
+  .work .desc { font-size:15px; line-height:1.6; color:#222; text-align:left; margin-bottom:10px; }
+
+  .work .media-grid {
+    display:grid;
+    grid-template-columns: 1fr;
+    gap:12px;
+    justify-items:center;
+  }
+
+  /* Images & videos sizing & quality */
+  .work img, .work video {
+    width:100%;
+    max-width: var(--media-max);
+    height:auto;
+    display:block;
+    border-radius:8px;
+    object-fit:cover;
+    box-shadow: 0 8px 20px rgba(10,10,10,0.06);
+    border:1px solid rgba(0,0,0,0.04);
+    background: #f6f6f6;
+  }
+
+  /* Fallback caption when media fails */
+  .media-fallback {
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:100%;
+    max-width:var(--media-max);
+    height:320px;
+    background:#fafafa;
+    color:var(--muted);
+    border-radius:8px;
+    border:1px solid rgba(0,0,0,0.03);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.03);
+    padding:12px;
+    text-align:center;
+  }
+
+  /* ABOUT */
+  .about .text-wrap { max-width:880px; margin-left:auto; margin-right:auto; text-align:center; }
+  .about .eng { font-size:16px; color:#222; line-height:1.7; margin-bottom:12px; }
+  .about .jp { font-family: "Noto Sans JP", sans-serif; font-size:16px; color:#222; line-height:1.7; margin-top:0; }
+
+  /* CONTACT */
+  .contact .contact-list { max-width:600px; margin-left:auto; margin-right:auto; text-align:center; font-size:16px; }
+  .contact .contact-list a { color:var(--accent); text-decoration:none; }
+  .contact .contact-list .social { display:inline-flex; gap:10px; align-items:center; color:#666; }
+
+  @media (max-width:980px){
+    .work .project-inner { flex-direction:column; }
+    .work .project-text { width:100%; padding-right:0; }
+    .work .project-media { width:100%; }
+    .hero .title, .hero .title-jp { font-size: clamp(24px, 8vw, 40px); }
+    .wrap { padding:110px 18px 60px 18px; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    * { transition:none!important; animation:none!important; }
+  }
+</style>
 </head>
 <body>
 
+  <!-- Header -->
   <header class="site-header" role="banner">
     <div class="brand"><a href="#top">Portfolio Rina</a></div>
+
     <nav class="top-nav" role="navigation" aria-label="Main navigation">
       <a href="#work">作品 / Work</a>
       <a href="#about">自己紹介 / About</a>
@@ -255,70 +229,82 @@
     </nav>
   </header>
 
+  <!-- Page wrapper -->
   <main id="top" class="wrap" role="main">
 
+    <!-- HERO -->
     <section class="hero" aria-labelledby="hero-title">
-      <img src="assets/r_background.png" class="hero-bg-logo" alt="" aria-hidden="true">
+      <!-- hero background logo (using r_background.png as requested) -->
+      <img src="assets/r_background.png" alt="" class="hero-bg-logo" aria-hidden="true" decoding="async" loading="lazy">
+
       <h1 id="hero-title" class="title">Graphic Designer &amp; Art Director</h1>
       <h2 class="title-jp">グラフィックデザイナー ＆ アートディレクター</h2>
-      <p class="lead">I find inspiration in movement, exchange, and experimentation — shaping every project through a human‑centered creative lens.</p>
+      <p class="lead">I find inspiration in movement, exchange, and experimentation — shaping every project through a human-centered creative lens.</p>
     </section>
 
+    <!-- WORK -->
     <section id="work" class="section work" aria-labelledby="work-title">
       <h2 id="work-title" class="section-title">Work</h2>
 
-      <!-- Project: La Maison B Ammar -->
-      <article class="project">
+      <!-- La Maison B. Ammar -->
+      <article class="project" id="p-lam">
         <div class="project-inner">
           <div class="project-text">
-            <h3>La Maison</h3>
-            <div class="meta">Graphic Designer & Content Manager — 2021/10/04 – 2023/09/29</div>
+            <h3>La Maison B. Ammar</h3>
+            <div class="meta">Graphic Designer &amp; Content Manager — 2021/10/04 – 2023/09/29</div>
             <div class="desc">Rebranded the company (logo, social media, stationery). Led content production and managed shoots while evolving the brand’s visual storytelling.</div>
           </div>
           <div class="project-media">
             <div class="media-grid">
-              <video controls preload="metadata">
+              <video controls preload="metadata" playsinline muted>
                 <source src="assets/lam_content_1.mp4" type="video/mp4">
                 Your browser does not support HTML5 video.
               </video>
-              <img src="assets/lam_content_2.jpg" alt="lam content 2">
-              <video controls preload="metadata">
+
+              <img src="assets/lam_content_2.jpg" alt="LaM content 2" loading="lazy" decoding="async">
+
+              <video controls preload="metadata" playsinline muted>
                 <source src="assets/lam_content_4.mp4" type="video/mp4">
                 Your browser does not support HTML5 video.
               </video>
-              <img src="assets/lam_design_1.png" alt="lam design 1">
-              <img src="assets/lam_design_2.png" alt="lam design 2">
+
+              <img src="assets/lam_design_1.png" alt="LaM design 1" loading="lazy" decoding="async">
+              <img src="assets/lam_design_2.png" alt="LaM design 2" loading="lazy" decoding="async">
             </div>
           </div>
         </div>
       </article>
 
-      <!-- Project: Pupchen -->
-      <article class="project">
+      <!-- Pupchen -->
+      <article class="project" id="p-pup">
         <div class="project-inner">
           <div class="project-text">
             <h3>Pupchen</h3>
-            <div class="meta">Creative Direction & Content Management — 2023/08/17 – 2023/10/31</div>
+            <div class="meta">Creative Direction &amp; Content Management — 2023/08/17 – 2023/10/31</div>
             <div class="desc">Led content strategy and daily production. Created seasonal editorial universes and social campaigns to support international sales.</div>
           </div>
           <div class="project-media">
             <div class="media-grid">
-              <video controls preload="metadata">
+              <video controls preload="metadata" playsinline muted>
                 <source src="assets/pup_content_1.mp4" type="video/mp4">
                 Your browser does not support HTML5 video.
               </video>
-              <video controls preload="metadata">
+
+              <video controls preload="metadata" playsinline muted>
                 <source src="assets/pup_content_launching.mp4" type="video/mp4">
                 Your browser does not support HTML5 video.
               </video>
-              <img src="assets/pup_dejeuner_1.jpg" alt="pup dejeuner 1">
-              <img src="assets/pup_dejeuner_2.jpg" alt="pup dejeuner 2">
-              <img src="assets/pup_dejeuner_3.jpg" alt="pup dejeuner 3">
-              <video controls preload="metadata">
+
+              <img src="assets/pup_dejeuner_1.jpg" alt="pup dejeuner 1" loading="lazy" decoding="async">
+              <img src="assets/pup_dejeuner_2.jpg" alt="pup dejeuner 2" loading="lazy" decoding="async">
+              <img src="assets/pup_dejeuner_3.jpg" alt="pup dejeuner 3" loading="lazy" decoding="async">
+
+              <video controls preload="metadata" playsinline muted>
                 <source src="assets/pup_launching_1.mp4" type="video/mp4">
                 Your browser does not support HTML5 video.
               </video>
-              <video controls preload="metadata">
+
+              <video controls preload="metadata" playsinline muted>
                 <source src="assets/pup_launching_2.mp4" type="video/mp4">
                 Your browser does not support HTML5 video.
               </video>
@@ -327,8 +313,8 @@
         </div>
       </article>
 
-      <!-- Project: Lobna — House of Goddesses -->
-      <article class="project">
+      <!-- Lobna — House of Goddesses -->
+      <article class="project" id="p-lobna">
         <div class="project-inner">
           <div class="project-text">
             <h3>Lobna — House of Goddesses</h3>
@@ -337,19 +323,20 @@
           </div>
           <div class="project-media">
             <div class="media-grid">
-              <img src="assets/bg_18.jpg" alt="lobna bg 18">
-              <img src="assets/bg_3.jpg" alt="lobna bg 3">
-              <img src="assets/bg_4.jpg" alt="lobna bg 4">
-              <img src="assets/logo_lobna_dore.png" alt="lobna logo">
-              <video controls preload="metadata">
+              <img src="assets/bg_18.jpg" alt="lobna bg 18" loading="lazy" decoding="async">
+              <img src="assets/bg_3.jpg" alt="lobna bg 3" loading="lazy" decoding="async">
+              <img src="assets/bg_4.jpg" alt="lobna bg 4" loading="lazy" decoding="async">
+              <img src="assets/logo_lobna_dore.png" alt="lobna logo" loading="lazy" decoding="async">
+
+              <video controls preload="metadata" playsinline muted>
                 <source src="assets/hog_vid_1.mp4" type="video/mp4">
                 Your browser does not support HTML5 video.
               </video>
-              <video controls preload="metadata">
+              <video controls preload="metadata" playsinline muted>
                 <source src="assets/hog_vid_2.mp4" type="video/mp4">
                 Your browser does not support HTML5 video.
               </video>
-              <video controls preload="metadata">
+              <video controls preload="metadata" playsinline muted>
                 <source src="assets/hog_vid_3.mp4" type="video/mp4">
                 Your browser does not support HTML5 video.
               </video>
@@ -358,95 +345,96 @@
         </div>
       </article>
 
-      <!-- Project: Maison de la Lumiere -->
-      <article class="project">
+      <!-- Maison de la Lumiere -->
+      <article class="project" id="p-mdl">
         <div class="project-inner">
           <div class="project-text">
             <h3>Maison de la Lumiere</h3>
-            <div class="meta">Graphic Designer & Content Director — 2024/02 – 2025/01</div>
+            <div class="meta">Graphic Designer &amp; Content Director — 2024/02 – 2025/01</div>
             <div class="desc">Reworked the entire brand identity (colors, logo, typography, guidelines). Directed and shot photo/video content to align with the refreshed branding.</div>
           </div>
           <div class="project-media">
             <div class="media-grid">
-              <video controls preload="metadata">
+              <video controls preload="metadata" playsinline muted>
                 <source src="assets/mdl_content_1.mp4" type="video/mp4">
                 Your browser does not support HTML5 video.
               </video>
-              <img src="assets/mdl_content_2.jpg" alt="mdl content 2">
-              <img src="assets/mdl_content_3.jpg" alt="mdl content 3">
-              <img src="assets/mdl_logo_1.png" alt="mdl logo">
+              <img src="assets/mdl_content_2.jpg" alt="mdl content 2" loading="lazy" decoding="async">
+              <img src="assets/mdl_content_3.jpg" alt="mdl content 3" loading="lazy" decoding="async">
+              <img src="assets/mdl_logo_1.png" alt="mdl logo" loading="lazy" decoding="async">
             </div>
           </div>
         </div>
       </article>
 
-      <!-- Project: Selma Feriani Gallery -->
-      <article class="project">
+      <!-- Selma Feriani Gallery -->
+      <article class="project" id="p-sfg">
         <div class="project-inner">
           <div class="project-text">
             <h3>Selma Feriani Gallery</h3>
-            <div class="meta">Graphic Design & Communication Support — 2024 — ongoing</div>
-            <div class="desc">Produce exhibition visuals, press materials and digital content for shows and fairs. Work adapts gallery communication for international audiences while keeping a minimal, art‑forward layout.</div>
+            <div class="meta">Graphic Design &amp; Communication Support — 2024 — ongoing</div>
+            <div class="desc">Produce exhibition visuals, press materials and digital content for shows and fairs. Work adapts gallery communication for international audiences while keeping a minimal, art-forward layout.</div>
           </div>
           <div class="project-media">
             <div class="media-grid">
-              <img src="assets/sfg_b_2.png" alt="sfg b 2">
-              <img src="assets/sfg_b_3.png" alt="sfg b 3">
-              <img src="assets/sfg_m.png" alt="sfg m">
-              <img src="assets/sfg_m2.png" alt="sfg m2">
+              <img src="assets/sfg_b_2.png" alt="sfg b 2" loading="lazy" decoding="async">
+              <img src="assets/sfg_b_3.png" alt="sfg b 3" loading="lazy" decoding="async">
+              <img src="assets/sfg_m.png" alt="sfg m" loading="lazy" decoding="async">
+              <img src="assets/sfg_m2.png" alt="sfg m2" loading="lazy" decoding="async">
             </div>
           </div>
         </div>
       </article>
 
-      <!-- Project: Buck N Brew -->
-      <article class="project">
+      <!-- Buck N Brew -->
+      <article class="project" id="p-bnb">
         <div class="project-inner">
           <div class="project-text">
             <h3>Buck N Brew — Coffee Shop</h3>
-            <div class="meta">Graphic Designer & 3D Interior Designer — 2024/07 (pre‑launch)</div>
+            <div class="meta">Graphic Designer &amp; 3D Interior Designer — 2024/07 (pre-launch)</div>
             <div class="desc">Built the full brand identity from scratch (logo, menu, signage, packaging). Designed the coffee shop’s interior space in 3D, merging brand aesthetic with spatial storytelling.</div>
           </div>
           <div class="project-media">
             <div class="media-grid">
-              <img src="assets/bnb_1.png" alt="bnb 1">
-              <img src "assets/bnb_facade.jpg" alt="bnb facade">
-              <img src="assets/bnb_interior_1.png" alt="bnb interior 1">
-              <img src="assets/bnb_interior_2.png" alt="bnb interior 2">
-              <img src="assets/bnb_interior_3.png" alt="bnb interior 3">
-              <img src="assets/bnb_interior_4.png" alt="bnb interior 4">
-              <img src="assets/facade_design_7.jpg" alt="facade design 7">
-              <img src="assets/logo_bnb_2.png" alt="bnb logo">
-            </div>
-          </div>
-        </div>
-      </article>   
-
-      <!-- Project: Southtown Rage -->
-      <article class="project">
-        <div class="project-inner">
-          <div class="project-text">
-            <h3>Southtown Rage — Rap Album (Fijo)</h3>
-            <div class="meta">Art Director & Visual Designer — Early December 2024</div>
-            <div class="desc">Designed album visuals and led art direction for 3 music videos; served as production director during shoots. Handled stills, promotional posters, and the visual system around the release.</div>
-          </div>
-          <div class="project-media">
-            <div class="media-grid">
-              <img src="assets/st_presentation.png" alt="st presentation">
-              <img src="assets/st_d_1.png" alt="st d1">
-              <img src="assets/st_d_2.png" alt="st d2">
-              <img src="assets/st_d_5.png" alt="st d5">
-              <img src="assets/st_d_7.png" alt="st d7">
-              <img src="assets/southtown_red_star.png" alt="southtown red star">
-              <img src="assets/southtown_tshirts.png" alt="southtown tshirts">
-              <img src="assets/st_moodboard.png" alt="st moodboard">
+              <img src="assets/bnb_1.png" alt="bnb 1" loading="lazy" decoding="async">
+              <img src="assets/bnb_facade.jpg" alt="bnb facade" loading="lazy" decoding="async">
+              <img src="assets/bnb_interior_1.png" alt="bnb interior 1" loading="lazy" decoding="async">
+              <img src="assets/bnb_interior_2.png" alt="bnb interior 2" loading="lazy" decoding="async">
+              <img src="assets/bnb_interior_3.png" alt="bnb interior 3" loading="lazy" decoding="async">
+              <img src="assets/bnb_interior_4.png" alt="bnb interior 4" loading="lazy" decoding="async">
+              <img src="assets/facade_design_7.jpg" alt="facade design 7" loading="lazy" decoding="async">
+              <img src="assets/logo_bnb_2.png" alt="bnb logo" loading="lazy" decoding="async">
             </div>
           </div>
         </div>
       </article>
 
-    </section>
+      <!-- Southtown Rage -->
+      <article class="project" id="p-st">
+        <div class="project-inner">
+          <div class="project-text">
+            <h3>Southtown Rage — Rap Album (Fijo)</h3>
+            <div class="meta">Art Director &amp; Visual Designer — Early December 2024</div>
+            <div class="desc">Designed album visuals and led art direction for 3 music videos; served as production director during shoots. Handled stills, promotional posters, and the visual system around the release.</div>
+          </div>
+          <div class="project-media">
+            <div class="media-grid">
+              <img src="assets/st_presentation.png" alt="st presentation" loading="lazy" decoding="async">
+              <img src="assets/st_d_1.png" alt="st d1" loading="lazy" decoding="async">
+              <img src="assets/st_d_2.png" alt="st d2" loading="lazy" decoding="async">
+              <img src="assets/st_d_5.png" alt="st d5" loading="lazy" decoding="async">
+              <img src="assets/st_d_7.png" alt="st d7" loading="lazy" decoding="async">
+              <img src="assets/southtown_red_star.png" alt="southtown red star" loading="lazy" decoding="async">
+              <img src="assets/southtown_tshirts.png" alt="southtown tshirts" loading="lazy" decoding="async">
+              <img src="assets/st_moodboard.png" alt="st moodboard" loading="lazy" decoding="async">
+            </div>
+          </div>
+        </div>
+      </article>
 
+    </section> <!-- end work -->
+
+    <!-- ABOUT -->
     <section id="about" class="section about" aria-labelledby="about-title">
       <h2 id="about-title" class="section-title">About</h2>
       <div class="text-wrap">
@@ -455,33 +443,142 @@
       </div>
     </section>
 
+    <!-- CONTACT -->
     <section id="contact" class="section contact" aria-labelledby="contact-title">
       <h2 id="contact-title" class="section-title">Contact</h2>
       <div class="contact-list">
         <p><strong>Email:</strong> <a href="mailto:benamarrina@gmail.com">benamarrina@gmail.com</a></p>
-        <p class="social"><img src="assets/linkedin_grey.png" alt="LinkedIn" style="width:20px;height:20px;vertical-align:middle;margin-right:8px;filter:grayscale(100%);"> <a href="https://www.linkedin.com/in/rina‑ben‑amar‑41687717b/" target="_blank" rel="noopener">LinkedIn</a></p>
+        <p class="social"><img src="assets/linkedin_grey.png" alt="LinkedIn" style="width:20px;height:20px;vertical-align:middle;margin-right:8px;filter:grayscale(100%);" loading="lazy" decoding="async" /> <a href="https://www.linkedin.com/in/rina-ben-amar-41687717b/" target="_blank" rel="noopener">LinkedIn</a></p>
       </div>
     </section>
 
-    <footer style="text-align:center;color:var(--muted);margin-top:64px;padding-bottom:40px;">© <strong>Rina Ben Amar</strong> — Graphic Designer &amp; Art Director</footer>
+    <footer style="text-align:center;color:var(--muted);margin-top:64px;padding-bottom:40px;">
+      © <strong>Rina Ben Amar</strong> — Graphic Designer &amp; Art Director
+    </footer>
 
   </main>
 
-  <script>
-    // Fade in/out background logo on scroll (only in hero)
-    const hero = document.querySelector('.hero');
-    const heroLogo = document.querySelector('.hero-bg-logo');
-    window.addEventListener('scroll', () => {
-      if (!hero || !heroLogo) return;
-      const rect = hero.getBoundingClientRect();
-      if (rect.bottom > 0 && rect.top < window.innerHeight) {
-        // hero in viewport
-        const opacity = 0.03 + 0.12 * (1 - Math.abs(rect.top / hero.offsetHeight));
-        heroLogo.style.opacity = Math.min(Math.max(opacity, 0), 0.06);
+<script>
+/* ========== Robust media loader & fallbacks ========== */
+
+// Helper: check resource is reachable with HEAD
+async function checkResource(url){
+  try{
+    const r = await fetch(url, { method: 'HEAD', cache: 'no-store' });
+    return r.ok;
+  }catch(e){
+    console.warn('HEAD check failed for', url, e);
+    return false;
+  }
+}
+
+// Replace media with fallback link if not reachable
+async function validateVideosAndImages(){
+  // VIDEOS
+  const videos = Array.from(document.querySelectorAll('video'));
+  await Promise.all(videos.map(async v => {
+    // find source element(s)
+    const srcEl = v.querySelector('source');
+    let src = srcEl ? srcEl.getAttribute('src') : v.getAttribute('src');
+    if(!src) return;
+    // ensure relative absolute path normalized
+    try {
+      const ok = await checkResource(src);
+      if(!ok){
+        // create fallback node
+        const fallback = document.createElement('div');
+        fallback.className = 'media-fallback';
+        fallback.innerHTML = `
+          <div>
+            <div style="font-weight:600;margin-bottom:6px;">Video unavailable</div>
+            <div style="font-size:13px;color:var(--muted);margin-bottom:10px;">This video couldn't be loaded from the server.</div>
+            <a href="${src}" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:underline;">Open video in new tab</a>
+          </div>
+        `;
+        v.parentNode.replaceChild(fallback, v);
       } else {
-        heroLogo.style.opacity = 0;
+        // attempt to load metadata to ensure playback
+        v.addEventListener('error', () => {
+          console.warn('Video element error for', src);
+        });
+        // small optimization: set poster from first frame if possible (browser will generate)
+        // leave as-is, but ensure preload=metadata is present
       }
+    } catch(e){ console.warn(e); }
+  }));
+
+  // IMAGES
+  const images = Array.from(document.querySelectorAll('img'));
+  await Promise.all(images.map(img => new Promise(resolve => {
+    // verify file reachable via HEAD
+    const src = img.getAttribute('src');
+    if(!src){ resolve(); return; }
+    checkResource(src).then(ok => {
+      if(!ok){
+        console.warn('Image not reachable:', src);
+        // replace with subtle fallback box
+        const fallback = document.createElement('div');
+        fallback.className = 'media-fallback';
+        fallback.innerHTML = `<div style="color:var(--muted)"><div style="font-weight:600">Image not found</div><div style="font-size:13px;margin-top:6px">Open <a href="${src}" target="_blank" rel="noopener">file</a></div></div>`;
+        img.parentNode.replaceChild(fallback, img);
+      } else {
+        // ensure images decode async to avoid blocking
+        img.decode && img.decode().catch(()=>{});
+      }
+      resolve();
+    }).catch(err => {
+      console.warn('checkResource error', err);
+      resolve();
     });
-  </script>
+  })));
+}
+
+// Hero fade in/out only while hero is in view
+(function heroFade(){
+  const hero = document.querySelector('.hero');
+  const logo = document.querySelector('.hero-bg-logo');
+  if(!hero || !logo) return;
+  function update(){
+    const rect = hero.getBoundingClientRect();
+    if(rect.bottom > 0 && rect.top < window.innerHeight){
+      // hero visible -> compute opacity based on how centered hero is
+      const visibleRatio = Math.max(0, Math.min(1, (window.innerHeight - Math.abs(rect.top)) / (window.innerHeight + rect.height)));
+      const opacity = 0.015 + 0.05 * visibleRatio; // subtle range
+      logo.style.opacity = opacity;
+      // tiny parallax for subtle movement
+      logo.style.transform = `translate(-50%,-50%) translateY(${(rect.top * -0.02).toFixed(2)}px)`;
+    } else {
+      logo.style.opacity = 0;
+    }
+  }
+  window.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update);
+  update();
+})();
+
+// Smooth scroll anchors with header offset
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', function(e){
+    const targetId = this.getAttribute('href').slice(1);
+    const target = document.getElementById(targetId);
+    if(target){
+      e.preventDefault();
+      const headerOffset = (document.querySelector('.site-header') || { offsetHeight: 0 }).offsetHeight;
+      const y = target.getBoundingClientRect().top + window.pageYOffset - headerOffset - 12;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+      history.replaceState(null, '', '#' + targetId);
+    }
+  });
+});
+
+// Run media checks after DOM ready (and small delay so GH pages finishes serving)
+document.addEventListener('DOMContentLoaded', () => {
+  // slight delay for GitHub Pages propagation
+  setTimeout(() => {
+    validateVideosAndImages().catch(e => console.warn('validate error', e));
+  }, 600);
+});
+</script>
+
 </body>
 </html>
