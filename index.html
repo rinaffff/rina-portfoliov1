@@ -1,482 +1,88 @@
-<!doctype html>
-<html lang="fr">
+<!-- Final optimized HTML with external hosting placeholders for Solution B -->
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Portfolio Rina</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rina Portfolio</title>
+  <style>
+    body { margin:0; font-family:Arial; background:#111; color:#eee; }
+    header { position:relative; height:80vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; overflow:hidden; }
+    #bgLogo { position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); opacity:0.05; width:60%; pointer-events:none; animation:fader 6s infinite alternate; }
+    @keyframes fader { from{opacity:0.02;} to{opacity:0.08;} }
+    h1, h2 { margin:0; z-index:2; }
 
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    .section { padding:60px 20px; max-width:900px; margin:auto; }
 
-<style>
-  :root{
-    --page-max:1200px;
-    --accent:#0b0b0b;
-    --muted:#6b6b6b;
-    --bg:#ffffff;
-    --gutter: clamp(18px, 2.6vw, 36px);
-    --media-max: 560px; /* taille maximale des medias (évite pixelisation) */
-    --hero-logo-opacity-min: 0.00;
-    --hero-logo-opacity-max: 0.06;
-  }
-
-  /* Base */
-  html,body{height:100%;margin:0;background:var(--bg);color:var(--accent);font-family:"Noto Sans JP",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; overflow-x:hidden;}
-  a{color:var(--accent);}
-
-  /* subtle global background */
-  body::before{
-    content:"";
-    position:fixed;
-    inset:0;
-    background-image: url('assets/r_background.png');
-    background-size: cover;
-    background-position: center;
-    opacity: 0.03;
-    pointer-events:none;
-    z-index:-2;
-  }
-
-  /* header */
-  header.site-header{
-    position:fixed; top:0; left:0; right:0; height:76px;
-    display:flex; align-items:center; justify-content:space-between;
-    padding: 14px var(--gutter); background: rgba(255,255,255,0.96);
-    z-index:90; box-shadow: 0 1px 0 rgba(0,0,0,0.03);
-  }
-  .brand { font-family:'Playfair Display', Georgia, serif; font-size:16px; font-weight:400; }
-  nav.top-nav{ display:flex; gap:24px; align-items:center; font-size:14px; }
-  nav.top-nav a{ text-decoration:none; color:var(--accent); padding:6px 8px; }
-  nav.top-nav a:hover{ text-decoration:underline; }
-
-  /* wrapper */
-  .wrap { max-width:var(--page-max); margin:0 auto; padding:140px var(--gutter) 80px var(--gutter); box-sizing:border-box; position:relative; z-index:2; }
-
-  /* hero */
-  .hero{ position:relative; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:18px; padding:40px 10px; z-index:3; overflow:hidden; }
-  .hero-bg-logo{
-    position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
-    width:min(60vw,700px); max-width:var(--media-max); opacity:0.00;
-    pointer-events:none; z-index:0; transition:opacity .55s ease, transform .6s ease; user-select:none;
-    filter:grayscale(1) saturate(.6);
-  }
-  .hero .title, .hero .title-jp{ font-family:'Playfair Display', Georgia, serif; font-weight:400; margin:0; font-size:clamp(32px,6.8vw,64px); line-height:1.02; color:var(--accent); max-width:92%; z-index:2; }
-  .hero .lead{ margin-top:6px; color:var(--muted); font-size:16px; max-width:880px; line-height:1.7; z-index:2; }
-
-  /* sections */
-  .section{ margin-top:84px; margin-bottom:84px; }
-  .section-title{ font-family:'Playfair Display', serif; font-size:32px; margin:0 0 18px 0; color:var(--accent); }
-
-  /* work layout */
-  .work { display:block; width:100%; max-width:var(--page-max); margin:0; }
-  .work .project { display:block; width:100%; margin-bottom:88px; padding-left:0; }
-  .work .project-inner { display:flex; flex-direction:row; gap:18px; align-items:flex-start; }
-  .work .project-text { width:36%; min-width:260px; padding-right:20px; }
-  .work .project-media { width:64%; }
-
-  .work .project h3{ margin:0 0 6px 0; font-family:'Playfair Display', serif; font-size:20px; font-weight:400; color:var(--accent); text-align:left; }
-  .work .meta{ font-size:13px; color:var(--muted); margin-bottom:12px; text-align:left; }
-  .work .desc{ font-size:15px; line-height:1.6; color:#222; text-align:left; margin-bottom:10px; }
-
-  .work .media-grid{ display:grid; grid-template-columns: 1fr; gap:12px; justify-items:center; }
-
-  /* media sizing: constrained to avoid pixelisation */
-  .work img, .work video{
-    width:100%;
-    max-width:var(--media-max);
-    height:auto;
-    display:block;
-    border-radius:8px;
-    object-fit:cover;
-    box-shadow:0 8px 20px rgba(10,10,10,0.06);
-    border:1px solid rgba(0,0,0,0.04);
-    background:#f6f6f6;
-  }
-
-  .media-fallback{
-    display:flex; align-items:center; justify-content:center;
-    width:100%; max-width:var(--media-max); min-height:260px; padding:12px;
-    background:#fafafa; color:var(--muted); border-radius:8px; border:1px solid rgba(0,0,0,0.03);
-    box-shadow:0 6px 18px rgba(0,0,0,0.03); text-align:center;
-  }
-
-  /* about/contact */
-  .about .text-wrap{ max-width:880px; margin:0 auto; text-align:center; }
-  .about .eng, .about .jp{ font-size:16px; color:#222; line-height:1.7; margin-bottom:12px; }
-
-  .contact .contact-list{ max-width:600px; margin:0 auto; text-align:center; font-size:16px; }
-  .contact .contact-list a{ color:var(--accent); text-decoration:none; }
-
-  /* responsiveness */
-  @media (max-width:980px){
-    .work .project-inner{ flex-direction:column; }
-    .work .project-text{ width:100%; padding-right:0; }
-    .work .project-media{ width:100%; }
-    .hero .title, .hero .title-jp{ font-size: clamp(24px,8vw,40px); }
-    .wrap{ padding:110px 18px 60px 18px; }
-  }
-
-  @media (prefers-reduced-motion: reduce){
-    *{ transition:none!important; animation:none!important; }
-  }
-
-</style>
+    .project { margin-bottom:60px; }
+    .project img, .project video { width:100%; height:auto; border-radius:12px; margin-top:15px; }
+    img, video { loading:lazy; }
+  </style>
 </head>
+
 <body>
+  <header>
+    <img id="bgLogo" src="https://i.imgur.com/2uQ2K6h.png" alt="background logo" />
+    <h1>Rina Ben Amar</h1>
+    <h2>Graphic Designer · Art Director</h2>
+  </header>
 
-<header class="site-header" role="banner">
-  <div class="brand"><a href="#top">Portfolio Rina</a></div>
-  <nav class="top-nav" role="navigation" aria-label="Main navigation">
-    <a href="#work">Work</a>
-    <a href="#about">About</a>
-    <a href="#contact">Contact</a>
-  </nav>
-</header>
+  <div class="section">
 
-<main id="top" class="wrap" role="main">
+    <!-- BNB -->
+    <div class="project">
+      <h2>BnB Branding</h2>
+      <img src="https://i.imgur.com/1dI2qJ0.jpeg" alt="bnb facade" />
+      <img src="https://i.imgur.com/7Nq5pYv.jpeg" alt="bnb interior 1" />
+      <img src="https://i.imgur.com/CXb6GgC.jpeg" alt="bnb interior 2" />
+      <img src="https://i.imgur.com/3iUl4do.jpeg" alt="bnb interior 3" />
+    </div>
 
-  <!-- HERO -->
-  <section class="hero" aria-labelledby="hero-title">
-    <!-- hero background (subtle) -->
-    <img class="hero-bg-logo" src="assets/r_background.png" alt="" aria-hidden="true" loading="lazy" decoding="async">
-    <h1 id="hero-title" class="title">Graphic Designer &amp; Art Director</h1>
-    <h2 class="title-jp">グラフィックデザイナー ＆ アートディレクター</h2>
-    <p class="lead">I find inspiration in movement, exchange, and experimentation — shaping every project through a human-centered creative lens.</p>
-  </section>
-
-  <!-- WORK (order: bnb → HOG (lobna) → pup → southtown → mdl → sfg → lam) -->
-  <section id="work" class="section work" aria-labelledby="work-title">
-    <h2 id="work-title" class="section-title">Work</h2>
-
-    <!-- BnB -->
-    <article class="project" id="p-bnb">
-      <div class="project-inner">
-        <div class="project-text">
-          <h3>Buck N Brew — Coffee Shop</h3>
-          <div class="meta">Graphic Designer &amp; 3D Interior Designer — 2024/07 (pre-launch)</div>
-          <div class="desc">Built the full brand identity (logo, menu, signage, packaging). Designed the coffee shop interior in 3D, merging brand aesthetic with spatial storytelling.</div>
-        </div>
-        <div class="project-media">
-          <div class="media-grid">
-            <img data-src="assets/bnb.png" alt="bnb main" class="lazy-media" loading="lazy" decoding="async">
-            <img data-src="assets/bnb_facade.jpg" alt="bnb facade" class="lazy-media" loading="lazy" decoding="async">
-            <img data-src="assets/bnb_interiror_design_1.png" alt="bnb interior 1" class="lazy-media" loading="lazy" decoding="async">
-            <img data-src="assets/bnb_interiror_design_2.png" alt="bnb interior 2" class="lazy-media" loading="lazy" decoding="async">
-            <img data-src="assets/bnb_interiror_design_3.png" alt="bnb interior 3" class="lazy-media" loading="lazy" decoding="async">
-            <img data-src="assets/bnb_interiror_design_4.png" alt="bnb interior 4" class="lazy-media" loading="lazy" decoding="async">
-            <img data-src="assets/facade_design_7.jpg" alt="facade design 7" class="lazy-media" loading="lazy" decoding="async">
-            <img data-src="assets/logo_BnB_2.png" alt="bnb logo" class="lazy-media" loading="lazy" decoding="async">
-          </div>
-        </div>
-      </div>
-    </article>
-
-    <!-- HOG (includes Lobna) -->
-    <article class="project" id="p-hog">
-      <div class="project-inner">
-        <div class="project-text">
-          <h3>House of Goddesses — Lobna</h3>
-          <div class="meta">Graphic Designer / Visual Identity — 2023/12 — ongoing</div>
-          <div class="desc">Launch visual identity and ongoing visual materials exploring feminine mythology and narrative.</div>
-        </div>
-        <div class="project-media">
-          <div class="media-grid">
-            <img data-src="assets/bg_18.jpg" alt="lobna bg 18" class="lazy-media" loading="lazy" decoding="async">
-            <img data-src="assets/bg_3.jpg" alt="lobna bg 3" class="lazy-media" loading="lazy" decoding="async">
-            <img data-src="assets/bg_4.jpg" alt="lobna bg 4" class="lazy-media" loading="lazy" decoding="async">
-            <img data-src="assets/hog_logo_1.jpg" alt="hog logo" class="lazy-media" loading="lazy" decoding="async">
-            <!-- videos lazy-loaded -->
-            <video class="lazy-video" controls preload="none" playsinline muted data-src="assets/hog_vid_1.mp4" aria-label="HOG video 1"></video>
-            <video class="lazy-video" controls preload="none" playsinline muted data-src="assets/hog_vid_2.mp4" aria-label="HOG video 2"></video>
-            <video class="lazy-video" controls preload="none" playsinline muted data-src="assets/hog_vid_3.mp4" aria-label="HOG video 3"></video>
-          </div>
-        </div>
-      </div>
-    </article>
+    <!-- HOG / Lobna -->
+    <div class="project">
+      <h2>HOG – Lobna</h2>
+      <img src="https://i.imgur.com/VEz0K1C.jpeg" alt="hog logo" />
+      <video controls src="https://res.cloudinary.com/demo/video/upload/w_1200/hog_vid_1.mp4"></video>
+      <video controls src="https://res.cloudinary.com/demo/video/upload/w_1200/hog_vid_2.mp4"></video>
+    </div>
 
     <!-- PUP -->
-    <article class="project" id="p-pup">
-      <div class="project-inner">
-        <div class="project-text">
-          <h3>Pupchen</h3>
-          <div class="meta">Creative Direction &amp; Content Management — 2023/08/17 – 2023/10/31</div>
-          <div class="desc">Content strategy, daily production, seasonal editorials and social campaigns for international sales.</div>
-        </div>
-        <div class="project-media">
-          <div class="media-grid">
-            <video class="lazy-video" controls preload="none" playsinline muted data-src="assets/pup_content_1.mp4" aria-label="Pup content 1"></video>
-            <video class="lazy-video" controls preload="none" playsinline muted data-src="assets/pup_content_launching.mp4" aria-label="Pup content launching"></video>
-            <img data-src="assets/pup_dejeuner_1.jpg" alt="pup dejeuner 1" class="lazy-media" loading="lazy" decoding="async">
-            <img data-src="assets/pup_dejeuner_2.jpg" alt="pup dejeuner 2" class="lazy-media" loading="lazy" decoding="async">
-            <img data-src="assets/pup_dejeuner_3.jpg" alt="pup dejeuner 3" class="lazy-media" loading="lazy" decoding="async">
-            <video class="lazy-video" controls preload="none" playsinline muted data-src="assets/pup_launching_1.mp4" aria-label="Pup launching 1"></video>
-            <video class="lazy-video" controls preload="none" playsinline muted data-src="assets/pup_launching_2.mp4" aria-label="Pup launching 2"></video>
-          </div>
-        </div>
-      </div>
-    </article>
+    <div class="project">
+      <h2>PUP</h2>
+      <img src="https://i.imgur.com/CSJ6WiA.jpeg" alt="pup déjeuner 1" />
+      <img src="https://i.imgur.com/5y3Q0iR.jpeg" alt="pup déjeuner 2" />
+      <video controls src="https://res.cloudinary.com/demo/video/upload/w_1200/pup_launching_1.mp4"></video>
+    </div>
 
-    <!-- Southtown -->
-    <article class="project" id="p-st">
-      <div class="project-inner">
-        <div class="project-text">
-          <h3>Southtown Rage — Rap Album (Fijo)</h3>
-          <div class="meta">Art Director &amp; Visual Designer — Early December 2024</div>
-          <div class="desc">Album visuals, art direction for music videos, stills and promotional materials.</div>
-        </div>
-        <div class="project-media">
-          <div class="media-grid">
-            <img data-src="assets/st_presentation.png" alt="st presentation" class="lazy-media" loading="lazy" decoding="async">
-            <img data-src="assets/st_d_1.png" alt="st d1" class="lazy-media" loading="lazy" decoding="async">
-            <img data-src="assets/st_d_2.png" alt="st d2" class="lazy-media" loading="lazy" decoding="async">
-            <img data-src="assets/st_d_5.png" alt="st d5" class="lazy-media" loading="lazy" decoding="async">
-            <img data-src="assets/st_d_7.png" alt="st d7" class="lazy-media" loading="lazy" decoding="async">
-            <img data-src="assets/south_town_red_star.png" alt="southtown red star" class="lazy-media" loading="lazy" decoding="async">
-            <img data-src="assets/southtown_tshirts.png" alt="southtown tshirts" class="lazy-media" loading="lazy" decoding="async">
-            <img data-src="assets/st_moodboard.png" alt="st moodboard" class="lazy-media" loading="lazy" decoding="async">
-          </div>
-        </div>
-      </div>
-    </article>
+    <!-- SOUTH TOWN -->
+    <div class="project">
+      <h2>Southtown</h2>
+      <img src="https://i.imgur.com/ocUvGzA.png" alt="southtown tshirts" />
+      <img src="https://i.imgur.com/ardNyJC.png" alt="red star" />
+    </div>
 
     <!-- MDL -->
-    <article class="project" id="p-mdl">
-      <div class="project-inner">
-        <div class="project-text">
-          <h3>Maison de la Lumiere</h3>
-          <div class="meta">Graphic Designer &amp; Content Director — 2024/02 – 2025/01</div>
-          <div class="desc">Full brand refresh, directed and shot photo/video content to align with the new visual language.</div>
-        </div>
-        <div class="project-media">
-          <div class="media-grid">
-            <video class="lazy-video" controls preload="none" playsinline muted data-src="assets/mdl_content_1.mp4" aria-label="MDL video"></video>
-            <img data-src="assets/mdl_content_2.jpg" alt="mdl content 2" class="lazy-media" loading="lazy" decoding="async">
-            <img data-src="assets/mdl_content_3.jpg" alt="mdl content 3" class="lazy-media" loading="lazy" decoding="async">
-            <img data-src="assets/mdl_logo_1.png" alt="mdl logo" class="lazy-media" loading="lazy" decoding="async">
-          </div>
-        </div>
-      </div>
-    </article>
+    <div class="project">
+      <h2>MDL</h2>
+      <img src="https://i.imgur.com/7BAdeqJ.jpeg" alt="mdl content" />
+      <video controls src="https://res.cloudinary.com/demo/video/upload/w_1200/mdl_content_1.mp4"></video>
+    </div>
 
     <!-- SFG -->
-    <article class="project" id="p-sfg">
-      <div class="project-inner">
-        <div class="project-text">
-          <h3>Selma Feriani Gallery</h3>
-          <div class="meta">Graphic Design &amp; Communication Support — 2024 — ongoing</div>
-          <div class="desc">Exhibition visuals, press materials and digital content for international audiences.</div>
-        </div>
-        <div class="project-media">
-          <div class="media-grid">
-            <img data-src="assets/sfg_b_2.png" alt="sfg b 2" class="lazy-media" loading="lazy" decoding="async">
-            <img data-src="assets/sfg_b_3.png" alt="sfg b 3" class="lazy-media" loading="lazy" decoding="async">
-            <img data-src="assets/sfg_m.png" alt="sfg m" class="lazy-media" loading="lazy" decoding="async">
-            <img data-src="assets/sfg_m2.png" alt="sfg m2" class="lazy-media" loading="lazy" decoding="async">
-          </div>
-        </div>
-      </div>
-    </article>
-
-    <!-- LaM (dernier) -->
-    <article class="project" id="p-lam">
-      <div class="project-inner">
-        <div class="project-text">
-          <h3>La Maison B. Ammar</h3>
-          <div class="meta">Graphic Designer &amp; Content Manager — 2021/10/04 – 2023/09/29</div>
-          <div class="desc">Rebranded the company: logo, stationery, social content and content production.</div>
-        </div>
-        <div class="project-media">
-          <div class="media-grid">
-            <video class="lazy-video" controls preload="none" playsinline muted data-src="assets/lam_content_1.mp4" aria-label="LaM video 1"></video>
-            <img data-src="assets/lam_content_2.jpg" alt="LaM content 2" class="lazy-media" loading="lazy" decoding="async">
-            <video class="lazy-video" controls preload="none" playsinline muted data-src="assets/lam_content_4.mp4" aria-label="LaM video 2"></video>
-            <img data-src="assets/lam_design_1.png" alt="LaM design 1" class="lazy-media" loading="lazy" decoding="async">
-            <img data-src="assets/lam_dexign_2.png" alt="LaM design 2" class="lazy-media" loading="lazy" decoding="async">
-          </div>
-        </div>
-      </div>
-    </article>
-
-  </section> <!-- end work -->
-
-  <!-- ABOUT -->
-  <section id="about" class="section about" aria-labelledby="about-title">
-    <h2 id="about-title" class="section-title">About</h2>
-    <div class="text-wrap">
-      <p class="eng">Born in 1998 in Sfax, Tunisia. I explore design movements and exchange perspectives with peers to keep my creativity flowing. I pursue expressive design through emotional research and iterative experimentation.</p>
-      <p class="jp">1998年チュニジア・スファックス生まれ。デザインの潮流や仲間との視点交換を通じて創造力を保ち続けています。感情に根ざしたリサーチと試行を通して、表現を追求しています。</p>
+    <div class="project">
+      <h2>SFG</h2>
+      <img src="https://i.imgur.com/kLxomxJ.png" alt="sfg design 1" />
+      <img src="https://i.imgur.com/e2yRnTf.png" alt="sfg design 2" />
     </div>
-  </section>
 
-  <!-- CONTACT -->
-  <section id="contact" class="section contact" aria-labelledby="contact-title">
-    <h2 id="contact-title" class="section-title">Contact</h2>
-    <div class="contact-list">
-      <p><strong>Email:</strong> <a href="mailto:benamarrina@gmail.com">benamarrina@gmail.com</a></p>
-      <p class="social">
-        <img src="assets/linkedin_grey.png" alt="LinkedIn" style="width:20px;height:20px;vertical-align:middle;margin-right:8px;filter:grayscale(100%);" loading="lazy" decoding="async">
-        <a href="https://www.linkedin.com/in/rina-ben-amar-41687717b/" target="_blank" rel="noopener">LinkedIn</a>
-      </p>
+    <!-- LaM -->
+    <div class="project">
+      <h2>LaM</h2>
+      <img src="https://i.imgur.com/7bnGLyI.jpeg" alt="lam content" />
+      <video controls src="https://res.cloudinary.com/demo/video/upload/w_1200/lam_content_1.mp4"></video>
     </div>
-  </section>
 
-  <footer style="text-align:center;color:var(--muted);margin-top:64px;padding-bottom:40px;">
-    © <strong>Rina Ben Amar</strong> — Graphic Designer &amp; Art Director
-  </footer>
-
-</main>
-
-<script>
-/* ========== UTIL: HEAD check ========== */
-async function headCheck(url){
-  try{
-    // attempt HEAD first (works on most servers incl GitHub Pages)
-    const res = await fetch(url, { method: 'HEAD', cache:'no-store' });
-    return res.ok;
-  }catch(e){
-    // fallback: attempt GET but only headers (not full body)
-    try{
-      const res2 = await fetch(url, { method: 'GET', cache:'no-store' });
-      return res2.ok;
-    }catch(e2){
-      return false;
-    }
-  }
-}
-
-/* ========== Lazy load images & videos via IntersectionObserver ========== */
-(function initLazyMedia(){
-  const lazyImages = Array.from(document.querySelectorAll('img.lazy-media'));
-  const lazyVideos = Array.from(document.querySelectorAll('video.lazy-video'));
-
-  const options = { root: null, rootMargin: '300px', threshold: 0.01 };
-
-  // images observer: set src when near viewport
-  const imgObs = new IntersectionObserver((entries, obs) => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting){
-        const img = entry.target;
-        const src = img.getAttribute('data-src');
-        if(src){
-          headCheck(src).then(ok => {
-            if(ok){
-              img.src = src;
-              img.removeAttribute('data-src');
-              img.classList.remove('lazy-media');
-              // decode asynchronously
-              try{ img.decode && img.decode().catch(()=>{}); }catch(e){}
-            } else {
-              // replace with fallback box
-              const f = document.createElement('div');
-              f.className = 'media-fallback';
-              f.innerHTML = '<div><strong>Image unavailable</strong><div style="color:var(--muted);margin-top:6px"><a href="'+src+'" target="_blank" rel="noopener">Open file</a></div></div>';
-              img.parentNode.replaceChild(f, img);
-            }
-          });
-        }
-        obs.unobserve(img);
-      }
-    });
-  }, options);
-
-  lazyImages.forEach(i => imgObs.observe(i));
-
-  // videos observer: create source when in view
-  const vidObs = new IntersectionObserver((entries, obs) => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting){
-        const v = entry.target;
-        const src = v.getAttribute('data-src');
-        if(src){
-          headCheck(src).then(ok => {
-            if(ok){
-              // create source element and attach
-              const source = document.createElement('source');
-              source.src = src;
-              source.type = 'video/mp4';
-              v.appendChild(source);
-              // set src attr as fallback for some browsers
-              v.src = src;
-              // load metadata so controls update
-              v.load();
-            } else {
-              const f = document.createElement('div');
-              f.className = 'media-fallback';
-              f.innerHTML = '<div><strong>Video unavailable</strong><div style="color:var(--muted);margin-top:6px"><a href="'+src+'" target="_blank" rel="noopener">Open video</a></div></div>';
-              v.parentNode.replaceChild(f, v);
-            }
-          });
-        }
-        obs.unobserve(v);
-      }
-    });
-  }, options);
-
-  lazyVideos.forEach(v => vidObs.observe(v));
-})();
-
-/* ========== hero fade-in/out (only while hero visible) ========== */
-(function heroFade(){
-  const hero = document.querySelector('.hero');
-  const logo = document.querySelector('.hero-bg-logo');
-  if(!hero || !logo) return;
-  const update = () => {
-    const rect = hero.getBoundingClientRect();
-    if(rect.bottom > 0 && rect.top < window.innerHeight){
-      const visibleRatio = Math.max(0, Math.min(1, (window.innerHeight - Math.abs(rect.top)) / (window.innerHeight + rect.height)));
-      const opacity = (parseFloat(getComputedStyle(logo).opacity) || 0) + 0; // computed baseline
-      const final = Math.max(0, Math.min(1, (0.015 + 0.045 * visibleRatio)));
-      logo.style.opacity = final;
-      // subtle parallax move
-      logo.style.transform = `translate(-50%,-50%) translateY(${(rect.top * -0.02).toFixed(2)}px)`;
-    } else {
-      logo.style.opacity = 0;
-    }
-  };
-  window.addEventListener('scroll', update, { passive: true });
-  window.addEventListener('resize', update);
-  update();
-})();
-
-/* ========== smooth anchor scrolling with header offset ========== */
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener('click', function(e){
-    const href = this.getAttribute('href');
-    if(!href || href === '#') return;
-    const id = href.slice(1);
-    const el = document.getElementById(id);
-    if(el){
-      e.preventDefault();
-      const headerOffset = (document.querySelector('.site-header') || { offsetHeight: 0 }).offsetHeight;
-      const y = el.getBoundingClientRect().top + window.pageYOffset - headerOffset - 12;
-      window.scrollTo({ top: y, behavior: 'smooth' });
-      history.replaceState(null, '', '#' + id);
-    }
-  });
-});
-
-/* run a safety check after DOM ready to catch anything not loaded (small delay) */
-document.addEventListener('DOMContentLoaded', () => {
-  setTimeout(()=> {
-    // find remaining lazy items not loaded yet and try headCheck + load them
-    document.querySelectorAll('img[data-src]').forEach(img => {
-      headCheck(img.getAttribute('data-src')).then(ok => {
-        if(ok){ img.src = img.getAttribute('data-src'); img.removeAttribute('data-src'); }
-      });
-    });
-    document.querySelectorAll('video.lazy-video').forEach(v => {
-      if(v.querySelector('source')) return;
-      const src = v.getAttribute('data-src');
-      if(src){
-        headCheck(src).then(ok => {
-          if(ok){
-            const s = document.createElement('source'); s.src = src; s.type = 'video/mp4'; v.appendChild(s); v.load();
-          }
-        });
-      }
-    });
-  }, 800);
-});
-</script>
+  </div>
 
 </body>
 </html>
