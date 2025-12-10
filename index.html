@@ -1,342 +1,302 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Portfolio Rina</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
-
 <style>
-
-/* ————————————————————————————— */
-/* ROOT + BASE STYLES (unchanged) */
-/* ————————————————————————————— */
-
 :root {
-    --page-max: 1200px;
-    --accent: #0b0b0b;
-    --muted: #6b6b6b;
-    --bg: #ffffff;
-    --gutter: clamp(18px, 2.6vw, 36px);
-    --thumb-min: 84px;
-    --thumb-max: 140px;
+  --page-max: 1200px;
+  --accent: #0b0b0b;
+  --muted: #6b6b6b;
+  --bg: #ffffff;
+  --gutter: clamp(18px, 2.6vw, 36px);
+  --thumb-min: 84px;
+  --thumb-max: 140px;
 }
 
 html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    background: var(--bg);
-    color: var(--accent);
-    font-family: "Noto Sans JP", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: var(--bg);
+  color: var(--accent);
+  font-family: "Noto Sans JP", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background-image: url('assets/r_background.png');
-    background-size: cover;
-    background-position: center;
-    opacity: 0.04;
-    pointer-events: none;
-    z-index: -2;
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url('assets/r_background.png');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.04;
+  pointer-events: none;
+  z-index: -2;
 }
 
-/* HEADER — unchanged */
-
 header.site-header {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    height: 76px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 14px var(--gutter);
-    background: rgba(255,255,255,0.96);
-    z-index: 80;
-    box-shadow: 0 1px 0 rgba(0,0,0,0.03);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px var(--gutter);
+  background: rgba(255,255,255,0.96);
+  z-index: 80;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.03);
 }
 
 .brand {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: 16px;
-    font-weight: 400;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 16px;
+  font-weight: 400;
 }
 
 .brand a {
-    color: var(--accent);
-    text-decoration: none;
+  color: var(--accent);
+  text-decoration: none;
 }
 
 nav.top-nav {
-    display: flex;
-    gap: 24px;
-    align-items: center;
-    font-size: 14px;
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  font-size: 14px;
 }
 
 nav.top-nav a {
-    color: var(--accent);
-    text-decoration: none;
-    padding: 6px 8px;
+  color: var(--accent);
+  text-decoration: none;
+  padding: 6px 8px;
 }
 
 nav.top-nav a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 .wrap {
-    max-width: var(--page-max);
-    margin: 0 auto;
-    padding: 140px var(--gutter) 80px var(--gutter);
-    box-sizing: border-box;
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 140px var(--gutter) 80px var(--gutter);
+  box-sizing: border-box;
+  position: relative;
+  z-index: 2;
 }
 
-/* ————————————————————————————— */
-/* HERO — unchanged */
-/* ————————————————————————————— */
-
+/* HERO */
 .hero {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 18px;
-    padding: 40px 10px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 18px;
+  padding: 40px 10px;
+  z-index: 3;
+  overflow: hidden;
 }
 
 .hero-bg-logo {
-    position: absolute;
-    left: 50%; top: 50%;
-    transform: translate(-50%, -50%);
-    width: min(60vw, 800px);
-    opacity: 0.03;
-    pointer-events: none;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: min(60vw, 800px);
+  height: auto;
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: 0;
+  transition: opacity 0.6s ease-in-out;
+  user-select: none;
 }
 
 .hero .title,
 .hero .title-jp {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-weight: 400;
-    margin: 0;
-    font-size: clamp(32px, 6.8vw, 64px);
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 400;
+  margin: 0;
+  font-size: clamp(32px, 6.8vw, 64px);
+  line-height: 1.02;
+  color: var(--accent);
+  max-width: 92%;
+  word-break: keep-all;
+  hyphens: none;
 }
 
-/* ————————————————————————————— */
-/* **UPDATED PROJECT LAYOUT** */
-/* ————————————————————————————— */
+.hero .lead {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 16px;
+  max-width: 880px;
+  line-height: 1.7;
+}
 
+.section {
+  margin-top: 84px;
+  margin-bottom: 84px;
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  margin: 0 0 18px 0;
+  color: var(--accent);
+}
+
+/* PROJECT STRUCTURE */
 .work .project {
-    width: 100%;
-    margin-bottom: 88px;
+  display: block;
+  width: 100%;
+  margin-bottom: 88px;
 }
 
-.work .project-header {
-    margin-bottom: 20px;
+.work .project-inner {
+  display: flex;
+  flex-direction: row;
+  gap: 28px;
+  align-items: flex-start;
 }
 
-.work .project-header h3 {
-    margin: 0 0 6px 0;
-    font-family: 'Playfair Display', serif;
-    font-size: 20px;
-    font-weight: 400;
+.work .project-text {
+  width: 36%;
+  min-width: 260px;
+  padding-right: 0;
+  box-sizing: border-box;
 }
 
-.work .meta {
-    font-size: 13px;
-    color: var(--muted);
-    margin-bottom: 8px;
-}
-
-.work .desc {
-    font-size: 15px;
-    line-height: 1.6;
-    color: #222;
-    margin-bottom: 14px;
-}
-
-/* Thumbnails — single-row until there are too many */
+/* Thumbnail grid */
 .work .media-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    align-items: flex-start;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 12px;
+  align-items: flex-start;
 }
 
+/* **THUMBNAILS +20%** */
 .work .media-grid > * {
-    flex: 0 0 clamp(var(--thumb-min), 11.5vw, var(--thumb-max));
-    height: auto;
-    border-radius: 6px;
-    box-shadow: 0 6px 18px rgba(10,10,10,0.06);
-    border: 1px solid rgba(0,0,0,0.04);
-    overflow: hidden;
+  flex: 0 0 clamp(var(--thumb-min), 13.8vw, var(--thumb-max));
+  height: auto;
+  display: block;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(10,10,10,0.06);
+  border: 1px solid rgba(0,0,0,0.04);
+  object-fit: cover;
 }
 
 .work .media-grid img,
 .work .media-grid video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  vertical-align: middle;
 }
 
-/* Right column content (only long paragraphs now) */
+/* Right column */
 .work .project-info {
-    margin-top: 14px;
-    font-size: 15px;
-    line-height: 1.6;
+  width: 64%;
+  box-sizing: border-box;
+  padding-left: 4%;
+  min-width: 280px;
 }
 
-/* ————————————————————————————— */
+.work h3 {
+  margin: 0 0 6px 0;
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--accent);
+  text-align: left;
+}
+
+.work .meta {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 12px;
+  text-align: left;
+}
+
+.work .desc {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #222;
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+/* ABOUT + CONTACT */
+.about .text-wrap {
+  max-width: 880px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.about .eng,
+.about .jp {
+  font-size: 16px;
+  color: #222;
+  line-height: 1.7;
+  margin-bottom: 12px;
+}
+
+.contact .contact-list {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 16px;
+}
+
+.contact .contact-list a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.contact .social {
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+  color: #666;
+}
+
 /* MOBILE */
-/* ————————————————————————————— */
-
 @media (max-width: 980px) {
-    .wrap { padding: 110px 18px 60px 18px; }
-    .work .media-grid > * {
-        flex: 0 0 clamp(96px, 22vw, 160px);
-    }
+  .work .project-inner {
+    flex-direction: column;
+  }
+
+  .work .project-text,
+  .work .project-info {
+    width: 100%;
+    padding: 0;
+  }
+
+  .work .media-grid {
+    justify-content: flex-start;
+  }
+
+  .work .media-grid > * {
+    flex: 0 0 clamp(96px, 22vw, 160px);
+  }
+
+  .hero .title,
+  .hero .title-jp {
+    font-size: clamp(24px, 8vw, 40px);
+  }
+
+  .wrap {
+    padding: 110px 18px 60px 18px;
+  }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
 </style>
-</head>
-
-<body>
-
-<header class="site-header">
-    <div class="brand"><a href="#top">Portfolio Rina</a></div>
-    <nav class="top-nav">
-        <a href="#work">作品 / Work</a>
-        <a href="#about">自己紹介 / About</a>
-        <a href="#contact">連絡先 / Contact</a>
-    </nav>
-</header>
-
-<main id="top" class="wrap">
-
-<!-- ————————————————————————————— -->
-<!-- HERO -->
-<!-- ————————————————————————————— -->
-
-<section class="hero">
-    <img src="assets/r_background.png" class="hero-bg-logo" alt="">
-    <h1 class="title">Graphic Designer & Art Director</h1>
-    <h2 class="title-jp">グラフィックデザイナー ＆ アートディレクター</h2>
-    <p class="lead">I find inspiration in movement, exchange, and experimentation — shaping every project through a human-centered creative lens.</p>
-</section>
-
-<!-- ————————————————————————————— -->
-<!-- WORK SECTION -->
-<!-- ————————————————————————————— -->
-
-<section id="work" class="section work">
-
-<h2 class="section-title">Work</h2>
-
-
-<!-- ————————————————————————————— -->
-<!-- 1. La Maison B. Ammar -->
-<!-- ————————————————————————————— -->
-
-<article class="project">
-
-    <div class="project-header">
-        <h3>La Maison B. Ammar</h3>
-        <div class="meta">Graphic Designer & Content Manager — 2021/10/04 – 2023/09/29</div>
-        <div class="desc">Rebranded the company (logo, social media, stationery). Led content production and managed shoots while evolving the brand’s visual storytelling.</div>
-    </div>
-
-    <div class="media-grid">
-        <video controls preload="metadata"><source src="assets/lam_content_1.mp4"></video>
-        <img src="assets/lam_content_2.jpg">
-        <video controls preload="metadata"><source src="assets/lam_content_4.mp4"></video>
-        <img src="assets/lam_design_1.png">
-        <img src="assets/lam_design_2.png">
-    </div>
-
-</article>
-
-
-<!-- ————————————————————————————— -->
-<!-- 2. Hiraa Al Jana -->
-<!-- ————————————————————————————— -->
-
-<article class="project">
-
-    <div class="project-header">
-        <h3>Hiraa Al Jana</h3>
-        <div class="meta">Social Media Manager — 2021</div>
-        <div class="desc">Created social media content and visual identity elements for a brand specialized in modest fashion, maintaining brand consistency and visual appeal.</div>
-    </div>
-
-    <div class="media-grid">
-        <video controls preload="metadata"><source src="assets/hiraa_video_1.mp4"></video>
-        <video controls preload="metadata"><source src="assets/hiraa_video_2.mp4"></video>
-        <img src="assets/hiraa_img_1.png">
-        <img src="assets/hiraa_img_2.png">
-    </div>
-
-</article>
-
-
-<!-- ————————————————————————————— -->
-<!-- 3. Linge de Maison -->
-<!-- ————————————————————————————— -->
-
-<article class="project">
-
-    <div class="project-header">
-        <h3>Linge de Maison</h3>
-        <div class="meta">Full Visual Identity & Motion — 2023</div>
-        <div class="desc">Designed complete visual identity and motion elements for a home textile brand, including logotype, color palette, packaging, and promotional videos.</div>
-    </div>
-
-    <div class="media-grid">
-        <video controls preload="metadata"><source src="assets/linge_video_1.mp4"></video>
-        <img src="assets/linge_design_1.png">
-        <img src="assets/linge_design_2.png">
-        <video controls preload="metadata"><source src="assets/linge_video_2.mp4"></video>
-    </div>
-
-</article>
-
-
-<!-- ————————————————————————————— -->
-<!-- 4. Other Projects (placeholders unless you gave assets) -->
-<!-- ————————————————————————————— -->
-
-<!-- Add everything you had here, **exact same format**, unchanged text, unchanged styling -->
-
-<!-- To keep this message from exceeding the token limit,  
-I will paste the remaining projects in the NEXT MESSAGE,  
-continuing immediately from this point. -->
-
-</section>
-
-</main>
-
-<script>
-/* Background logo fade — unchanged */
-const hero = document.querySelector('.hero');
-const heroLogo = document.querySelector('.hero-bg-logo');
-
-window.addEventListener('scroll', () => {
-    if (!hero || !heroLogo) return;
-    const rect = hero.getBoundingClientRect();
-    if (rect.bottom > 0 && rect.top < window.innerHeight) {
-        const opacity = 0.03 + 0.12 * (1 - Math.abs(rect.top / hero.offsetHeight));
-        heroLogo.style.opacity = Math.min(Math.max(opacity, 0), 0.06);
-    } else {
-        heroLogo.style.opacity = 0;
-    }
-});
-</script>
-
-</body>
-</html>
