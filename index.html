@@ -1,302 +1,339 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Portfolio — Rina Ben Amar</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
 <style>
-:root {
-  --page-max: 1200px;
-  --accent: #0b0b0b;
-  --muted: #6b6b6b;
-  --bg: #ffffff;
-  --gutter: clamp(18px, 2.6vw, 36px);
-  --thumb-min: 84px;
-  --thumb-max: 140px;
+:root{
+  --max-width:1200px;
+  --text:#0b0b0b;
+  --muted:#6b6b6b;
+  --thumb:260px;
+  --gap:14px;
 }
 
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  background: var(--bg);
-  color: var(--accent);
-  font-family: "Noto Sans JP", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
+*{box-sizing:border-box}
+
+html,body{
+  margin:0;
+  background:#fff;
+  color:var(--text);
+  font-family:"Noto Sans JP",system-ui,sans-serif;
 }
 
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background-image: url('assets/r_background.png');
-  background-size: cover;
-  background-position: center;
-  opacity: 0.04;
-  pointer-events: none;
-  z-index: -2;
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:url("assets/r_background.png") center/cover no-repeat;
+  opacity:.035;
+  z-index:-1;
 }
 
-header.site-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 76px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 14px var(--gutter);
-  background: rgba(255,255,255,0.96);
-  z-index: 80;
-  box-shadow: 0 1px 0 rgba(0,0,0,0.03);
+header{
+  position:fixed;
+  top:0; left:0; right:0;
+  height:70px;
+  background:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 32px;
+  box-shadow:0 1px 0 rgba(0,0,0,.05);
+  z-index:10;
 }
 
-.brand {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: 16px;
-  font-weight: 400;
+header a{
+  text-decoration:none;
+  color:var(--text);
+  margin-left:20px;
 }
 
-.brand a {
-  color: var(--accent);
-  text-decoration: none;
+main{
+  max-width:var(--max-width);
+  margin:0 auto;
+  padding:140px 24px 80px;
 }
 
-nav.top-nav {
-  display: flex;
-  gap: 24px;
-  align-items: center;
-  font-size: 14px;
+.hero{
+  position:relative;
+  text-align:center;
+  padding:60px 0 80px;
 }
 
-nav.top-nav a {
-  color: var(--accent);
-  text-decoration: none;
-  padding: 6px 8px;
+.hero-bg{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  pointer-events:none;
 }
 
-nav.top-nav a:hover {
-  text-decoration: underline;
+.hero-bg img{
+  width:420px;
+  opacity:.06;
 }
 
-.wrap {
-  max-width: var(--page-max);
-  margin: 0 auto;
-  padding: 140px var(--gutter) 80px var(--gutter);
-  box-sizing: border-box;
-  position: relative;
-  z-index: 2;
+.hero h1{
+  font-family:"Playfair Display",serif;
+  font-size:56px;
+  margin:0;
 }
 
-/* HERO */
-.hero {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  gap: 18px;
-  padding: 40px 10px;
-  z-index: 3;
-  overflow: hidden;
+.hero h2{
+  font-family:"Playfair Display",serif;
+  font-weight:400;
+  margin:10px 0;
 }
 
-.hero-bg-logo {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: min(60vw, 800px);
-  height: auto;
-  opacity: 0.03;
-  pointer-events: none;
-  z-index: 0;
-  transition: opacity 0.6s ease-in-out;
-  user-select: none;
+.hero p{
+  color:var(--muted);
+  max-width:720px;
+  margin:20px auto 0;
 }
 
-.hero .title,
-.hero .title-jp {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-weight: 400;
-  margin: 0;
-  font-size: clamp(32px, 6.8vw, 64px);
-  line-height: 1.02;
-  color: var(--accent);
-  max-width: 92%;
-  word-break: keep-all;
-  hyphens: none;
+.section{margin-top:90px}
+
+.section-title{
+  font-family:"Playfair Display",serif;
+  font-size:32px;
+  margin-bottom:30px;
 }
 
-.hero .lead {
-  margin-top: 6px;
-  color: var(--muted);
-  font-size: 16px;
-  max-width: 880px;
-  line-height: 1.7;
+.project{margin-bottom:80px}
+
+.project-inner{
+  display:flex;
+  gap:32px;
+  align-items:flex-start;
 }
 
-.section {
-  margin-top: 84px;
-  margin-bottom: 84px;
+.project-text{
+  width:300px;
 }
 
-.section-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 32px;
-  margin: 0 0 18px 0;
-  color: var(--accent);
+.project-text h3{
+  font-family:"Playfair Display",serif;
+  font-weight:400;
+  margin:0 0 6px;
 }
 
-/* PROJECT STRUCTURE */
-.work .project {
-  display: block;
-  width: 100%;
-  margin-bottom: 88px;
+.project-text .meta{
+  font-size:13px;
+  color:var(--muted);
+  margin-bottom:12px;
 }
 
-.work .project-inner {
-  display: flex;
-  flex-direction: row;
-  gap: 28px;
-  align-items: flex-start;
+.project-text .desc{
+  font-size:15px;
+  line-height:1.6;
 }
 
-.work .project-text {
-  width: 36%;
-  min-width: 260px;
-  padding-right: 0;
-  box-sizing: border-box;
+.media-flow{
+  display:flex;
+  flex-wrap:wrap;
+  gap:var(--gap);
 }
 
-/* Thumbnail grid */
-.work .media-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 12px;
-  align-items: flex-start;
+.media-item{
+  width:var(--thumb);
 }
 
-/* **THUMBNAILS +20%** */
-.work .media-grid > * {
-  flex: 0 0 clamp(var(--thumb-min), 13.8vw, var(--thumb-max));
-  height: auto;
-  display: block;
-  border-radius: 6px;
-  overflow: hidden;
-  box-shadow: 0 6px 18px rgba(10,10,10,0.06);
-  border: 1px solid rgba(0,0,0,0.04);
-  object-fit: cover;
+.media-item img,
+.media-item video{
+  width:100%;
+  height:auto;
+  max-height:260px;
+  object-fit:cover;
+  border-radius:8px;
+  display:block;
+  background:#f3f3f3;
 }
 
-.work .media-grid img,
-.work .media-grid video {
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: cover;
-  vertical-align: middle;
+.about,.contact{text-align:center}
+
+footer{
+  text-align:center;
+  color:var(--muted);
+  margin-top:80px;
 }
 
-/* Right column */
-.work .project-info {
-  width: 64%;
-  box-sizing: border-box;
-  padding-left: 4%;
-  min-width: 280px;
+@media(max-width:900px){
+  .project-inner{flex-direction:column}
+  .project-text{width:100%}
+  .media-item{width:48%}
 }
 
-.work h3 {
-  margin: 0 0 6px 0;
-  font-family: 'Playfair Display', serif;
-  font-size: 20px;
-  font-weight: 400;
-  color: var(--accent);
-  text-align: left;
-}
-
-.work .meta {
-  font-size: 13px;
-  color: var(--muted);
-  margin-bottom: 12px;
-  text-align: left;
-}
-
-.work .desc {
-  font-size: 15px;
-  line-height: 1.6;
-  color: #222;
-  text-align: left;
-  margin-bottom: 10px;
-}
-
-/* ABOUT + CONTACT */
-.about .text-wrap {
-  max-width: 880px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.about .eng,
-.about .jp {
-  font-size: 16px;
-  color: #222;
-  line-height: 1.7;
-  margin-bottom: 12px;
-}
-
-.contact .contact-list {
-  max-width: 600px;
-  margin: 0 auto;
-  text-align: center;
-  font-size: 16px;
-}
-
-.contact .contact-list a {
-  color: var(--accent);
-  text-decoration: none;
-}
-
-.contact .social {
-  display: inline-flex;
-  gap: 10px;
-  align-items: center;
-  color: #666;
-}
-
-/* MOBILE */
-@media (max-width: 980px) {
-  .work .project-inner {
-    flex-direction: column;
-  }
-
-  .work .project-text,
-  .work .project-info {
-    width: 100%;
-    padding: 0;
-  }
-
-  .work .media-grid {
-    justify-content: flex-start;
-  }
-
-  .work .media-grid > * {
-    flex: 0 0 clamp(96px, 22vw, 160px);
-  }
-
-  .hero .title,
-  .hero .title-jp {
-    font-size: clamp(24px, 8vw, 40px);
-  }
-
-  .wrap {
-    padding: 110px 18px 60px 18px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  * {
-    transition: none !important;
-    animation: none !important;
-  }
+@media(max-width:520px){
+  .media-item{width:100%}
 }
 </style>
+</head>
+
+<body>
+
+<header>
+  <strong>Portfolio Rina</strong>
+  <nav>
+    <a href="#work">Work</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main>
+
+<section class="hero">
+  <div class="hero-bg">
+    <img src="assets/r_background.png" alt="">
+  </div>
+  <h1>Graphic Designer & Art Director</h1>
+  <h2>グラフィックデザイナー & アートディレクター</h2>
+  <p>I design visual systems driven by emotion, research and experimentation.</p>
+</section>
+
+<section id="work" class="section">
+<h2 class="section-title">Work</h2>
+
+<!-- Buck N Brew -->
+<div class="project">
+  <div class="project-inner">
+    <div class="project-text">
+      <h3>Buck N Brew</h3>
+      <div class="meta">Graphic Design & 3D — 2024</div>
+      <div class="desc">Brand identity and spatial design.</div>
+    </div>
+    <div class="media-flow">
+      <div class="media-item"><img src="assets/bnb.png"></div>
+      <div class="media-item"><img src="assets/bnb_facade.jpg"></div>
+      <div class="media-item"><img src="assets/bnb_interiror_design_1.png"></div>
+      <div class="media-item"><img src="assets/bnb_interiror_design_2.png"></div>
+      <div class="media-item"><img src="assets/bnb_interiror_design_3.png"></div>
+      <div class="media-item"><img src="assets/bnb_interiror_design_4.png"></div>
+    </div>
+  </div>
+</div>
+
+<!-- House of Goddesses -->
+<div class="project">
+  <div class="project-inner">
+    <div class="project-text">
+      <h3>House of Goddesses — Lobna</h3>
+      <div class="meta">Visual Identity — Ongoing</div>
+      <div class="desc">Mythology-inspired visual language.</div>
+    </div>
+    <div class="media-flow">
+      <div class="media-item"><img src="assets/bg_18.jpg"></div>
+      <div class="media-item"><img src="assets/bg_3.jpg"></div>
+      <div class="media-item"><img src="assets/bg_4.jpg"></div>
+      <div class="media-item"><video src="assets/hog_vid_1.mp4" controls></video></div>
+      <div class="media-item"><video src="assets/hog_vid_2.mp4" controls></video></div>
+      <div class="media-item"><video src="assets/hog_vid_3.mp4" controls></video></div>
+    </div>
+  </div>
+</div>
+
+<!-- PUP -->
+<div class="project">
+  <div class="project-inner">
+    <div class="project-text">
+      <h3>PUP</h3>
+      <div class="meta">Branding — 2023</div>
+      <div class="desc">Playful visual identity.</div>
+    </div>
+    <div class="media-flow">
+      <div class="media-item"><img src="assets/pup_1.jpg"></div>
+      <div class="media-item"><img src="assets/pup_2.jpg"></div>
+      <div class="media-item"><img src="assets/pup_3.jpg"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Southtown -->
+<div class="project">
+  <div class="project-inner">
+    <div class="project-text">
+      <h3>Southtown</h3>
+      <div class="meta">Art Direction — 2022</div>
+      <div class="desc">Urban visual exploration.</div>
+    </div>
+    <div class="media-flow">
+      <div class="media-item"><img src="assets/southtown_1.jpg"></div>
+      <div class="media-item"><img src="assets/southtown_2.jpg"></div>
+      <div class="media-item"><img src="assets/southtown_3.jpg"></div>
+    </div>
+  </div>
+</div>
+
+<!-- MDL -->
+<div class="project">
+  <div class="project-inner">
+    <div class="project-text">
+      <h3>MDL</h3>
+      <div class="meta">Editorial Design</div>
+      <div class="desc">Minimal typographic system.</div>
+    </div>
+    <div class="media-flow">
+      <div class="media-item"><img src="assets/mdl_1.jpg"></div>
+      <div class="media-item"><img src="assets/mdl_2.jpg"></div>
+    </div>
+  </div>
+</div>
+
+<!-- SFG -->
+<div class="project">
+  <div class="project-inner">
+    <div class="project-text">
+      <h3>SFG</h3>
+      <div class="meta">Graphic Design</div>
+      <div class="desc">Experimental visual language.</div>
+    </div>
+    <div class="media-flow">
+      <div class="media-item"><img src="assets/sfg_1.jpg"></div>
+      <div class="media-item"><img src="assets/sfg_2.jpg"></div>
+    </div>
+  </div>
+</div>
+
+<!-- LaM -->
+<div class="project">
+  <div class="project-inner">
+    <div class="project-text">
+      <h3>LaM</h3>
+      <div class="meta">Brand Identity</div>
+      <div class="desc">Cultural branding project.</div>
+    </div>
+    <div class="media-flow">
+      <div class="media-item"><img src="assets/lam_1.jpg"></div>
+      <div class="media-item"><img src="assets/lam_2.jpg"></div>
+    </div>
+  </div>
+</div>
+
+</section>
+
+<section id="about" class="section about">
+<h2 class="section-title">About</h2>
+<p>Born in 1998 in Sfax, Tunisia. I work through emotion, movement and research.</p>
+</section>
+
+<section id="contact" class="section contact">
+<h2 class="section-title">Contact</h2>
+<p>Email: <a href="mailto:benamarrina@gmail.com">benamarrina@gmail.com</a></p>
+<p>
+<img src="assets/linkedin_grey.png" style="width:18px;vertical-align:middle">
+<a href="https://www.linkedin.com/in/rina-ben-amar-41687717b/" target="_blank">LinkedIn</a>
+</p>
+</section>
+
+<footer>© Rina Ben Amar</footer>
+
+</main>
+</body>
+</html>
+
