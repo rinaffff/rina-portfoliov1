@@ -1,176 +1,123 @@
 <!doctype html>
-<html lang="fr">
+<html lang="en">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Portfolio — Rina Ben Amar</title>
+<title>Portfolio Rina</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
 :root{
-  --max-width:1200px;
-  --text:#0b0b0b;
+  --page-max:1200px;
+  --accent:#0b0b0b;
   --muted:#6b6b6b;
-  --thumb:260px;
-  --gap:14px;
+  --bg:#ffffff;
+  --gutter:clamp(18px,2.6vw,36px);
+  --thumb-width:260px;
 }
-
-*{box-sizing:border-box}
 
 html,body{
   margin:0;
-  background:#fff;
-  color:var(--text);
-  font-family:"Noto Sans JP",system-ui,sans-serif;
-}
-
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  background:url("assets/r_background.png") center/cover no-repeat;
-  opacity:.035;
-  z-index:-1;
+  background:var(--bg);
+  color:var(--accent);
+  font-family:"Noto Sans JP",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
 }
 
 header{
   position:fixed;
-  top:0; left:0; right:0;
-  height:70px;
-  background:#fff;
+  inset:0 0 auto 0;
+  height:76px;
   display:flex;
-  align-items:center;
   justify-content:space-between;
-  padding:0 32px;
-  box-shadow:0 1px 0 rgba(0,0,0,.05);
-  z-index:10;
+  align-items:center;
+  padding:14px var(--gutter);
+  background:rgba(255,255,255,.96);
+  z-index:100;
 }
 
-header a{
+.brand{
+  font-family:'Playfair Display',serif;
+  font-size:16px;
+}
+
+nav a{
+  margin-left:22px;
   text-decoration:none;
-  color:var(--text);
-  margin-left:20px;
+  color:var(--accent);
+  font-size:14px;
 }
 
-main{
-  max-width:var(--max-width);
+.wrap{
+  max-width:var(--page-max);
   margin:0 auto;
-  padding:140px 24px 80px;
+  padding:140px var(--gutter) 80px;
 }
 
 .hero{
-  position:relative;
   text-align:center;
-  padding:60px 0 80px;
+  margin-bottom:100px;
+  position:relative;
 }
 
-.hero-bg{
+.hero img{
   position:absolute;
-  inset:0;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  inset:50% auto auto 50%;
+  transform:translate(-50%,-50%);
+  width:480px;
+  opacity:.04;
   pointer-events:none;
 }
 
-.hero-bg img{
-  width:420px;
-  opacity:.06;
-}
-
-.hero h1{
-  font-family:"Playfair Display",serif;
-  font-size:56px;
+.hero h1,.hero h2{
+  font-family:'Playfair Display',serif;
+  font-weight:400;
   margin:0;
 }
 
-.hero h2{
-  font-family:"Playfair Display",serif;
-  font-weight:400;
-  margin:10px 0;
-}
+.hero h1{font-size:52px;}
+.hero h2{font-size:52px;}
+.hero p{color:var(--muted);max-width:820px;margin:20px auto 0;}
 
-.hero p{
-  color:var(--muted);
-  max-width:720px;
-  margin:20px auto 0;
-}
-
-.section{margin-top:90px}
-
+.section{margin-bottom:90px;}
 .section-title{
-  font-family:"Playfair Display",serif;
+  font-family:'Playfair Display',serif;
   font-size:32px;
-  margin-bottom:30px;
+  margin-bottom:26px;
 }
 
-.project{margin-bottom:80px}
-
-.project-inner{
-  display:flex;
-  gap:32px;
-  align-items:flex-start;
-}
-
-.project-text{
-  width:300px;
-}
-
-.project-text h3{
-  font-family:"Playfair Display",serif;
+.project{margin-bottom:70px;}
+.project-inner{display:flex;gap:26px;align-items:flex-start;}
+.project-text{flex:0 0 320px;}
+.project h3{
+  font-family:'Playfair Display',serif;
   font-weight:400;
+  font-size:20px;
   margin:0 0 6px;
 }
-
-.project-text .meta{
-  font-size:13px;
-  color:var(--muted);
-  margin-bottom:12px;
-}
-
-.project-text .desc{
-  font-size:15px;
-  line-height:1.6;
-}
+.meta{font-size:13px;color:var(--muted);margin-bottom:10px;}
+.desc{font-size:15px;line-height:1.6;}
 
 .media-flow{
   display:flex;
   flex-wrap:wrap;
-  gap:var(--gap);
+  gap:14px;
 }
 
-.media-item{
-  width:var(--thumb);
-}
-
-.media-item img,
-.media-item video{
-  width:100%;
+.media-flow img,
+.media-flow video{
+  width:var(--thumb-width);
   height:auto;
-  max-height:260px;
-  object-fit:cover;
   border-radius:8px;
-  display:block;
-  background:#f3f3f3;
-}
-
-.about,.contact{text-align:center}
-
-footer{
-  text-align:center;
-  color:var(--muted);
-  margin-top:80px;
+  object-fit:cover;
+  box-shadow:0 6px 16px rgba(0,0,0,.06);
 }
 
 @media(max-width:900px){
-  .project-inner{flex-direction:column}
-  .project-text{width:100%}
-  .media-item{width:48%}
-}
-
-@media(max-width:520px){
-  .media-item{width:100%}
+  .project-inner{flex-direction:column;}
+  .project-text{flex:1}
+  .media-flow img,
+  .media-flow video{width:48%;}
 }
 </style>
 </head>
@@ -178,162 +125,156 @@ footer{
 <body>
 
 <header>
-  <strong>Portfolio Rina</strong>
+  <div class="brand">Portfolio Rina</div>
   <nav>
-    <a href="#work">Work</a>
+    <a href="#projects">Projects</a>
     <a href="#about">About</a>
     <a href="#contact">Contact</a>
   </nav>
 </header>
 
-<main>
+<main class="wrap">
 
 <section class="hero">
-  <div class="hero-bg">
-    <img src="assets/r_background.png" alt="">
-  </div>
+  <img src="assets/r_background.png" alt="">
   <h1>Graphic Designer & Art Director</h1>
-  <h2>グラフィックデザイナー & アートディレクター</h2>
-  <p>I design visual systems driven by emotion, research and experimentation.</p>
+  <h2>グラフィックデザイナー ＆ アートディレクター</h2>
+  <p>I find inspiration in movement, exchange, and experimentation — shaping every project through a human-centered creative lens.</p>
 </section>
 
-<section id="work" class="section">
-<h2 class="section-title">Work</h2>
+<section id="projects" class="section">
+<h2 class="section-title">Projects</h2>
 
-<!-- Buck N Brew -->
+<!-- Buck n Brew -->
 <div class="project">
-  <div class="project-inner">
-    <div class="project-text">
-      <h3>Buck N Brew</h3>
-      <div class="meta">Graphic Design & 3D — 2024</div>
-      <div class="desc">Brand identity and spatial design.</div>
-    </div>
-    <div class="media-flow">
-      <div class="media-item"><img src="assets/bnb.png"></div>
-      <div class="media-item"><img src="assets/bnb_facade.jpg"></div>
-      <div class="media-item"><img src="assets/bnb_interiror_design_1.png"></div>
-      <div class="media-item"><img src="assets/bnb_interiror_design_2.png"></div>
-      <div class="media-item"><img src="assets/bnb_interiror_design_3.png"></div>
-      <div class="media-item"><img src="assets/bnb_interiror_design_4.png"></div>
-    </div>
-  </div>
+<div class="project-inner">
+<div class="project-text">
+<h3>Buck n Brew</h3>
+<div class="meta">Graphic Design & Brand Identity — 2024/05/01 – 2025/03/12</div>
+<div class="desc">Designed the complete visual identity: logo, typography, packaging, menus, printed materials and social media templates.</div>
+</div>
+<div class="media-flow">
+<img src="assets/BB-1.jpg"><img src="assets/BB-2.jpg"><img src="assets/BB-3.jpg">
+<img src="assets/BB-4.jpg"><img src="assets/BB-5.jpg"><img src="assets/BB-6.jpg">
+</div>
+</div>
 </div>
 
 <!-- House of Goddesses -->
 <div class="project">
-  <div class="project-inner">
-    <div class="project-text">
-      <h3>House of Goddesses — Lobna</h3>
-      <div class="meta">Visual Identity — Ongoing</div>
-      <div class="desc">Mythology-inspired visual language.</div>
-    </div>
-    <div class="media-flow">
-      <div class="media-item"><img src="assets/bg_18.jpg"></div>
-      <div class="media-item"><img src="assets/bg_3.jpg"></div>
-      <div class="media-item"><img src="assets/bg_4.jpg"></div>
-      <div class="media-item"><video src="assets/hog_vid_1.mp4" controls></video></div>
-      <div class="media-item"><video src="assets/hog_vid_2.mp4" controls></video></div>
-      <div class="media-item"><video src="assets/hog_vid_3.mp4" controls></video></div>
-    </div>
-  </div>
+<div class="project-inner">
+<div class="project-text">
+<h3>House of Goddesses</h3>
+<div class="meta">Graphic Designer — 2023/12/01 – ongoing</div>
+<div class="desc">Created the launch visual identity. Ongoing graphic design and social media management.</div>
+</div>
+<div class="media-flow">
+<img src="assets/hog_design_1.jpg"><img src="assets/hog_design_2.jpg">
+<img src="assets/hog_design_3.jpg"><img src="assets/hog_design_4.jpg">
+<img src="assets/hog_logo_1.png"><img src="assets/hog_logo_2.png">
+<video controls src="assets/hog_vid_1.mp4"></video>
+<video controls src="assets/hog_vid_2.mp4"></video>
+<video controls src="assets/hog_vid_3.mp4"></video>
+</div>
+</div>
 </div>
 
-<!-- PUP -->
+<!-- Pupchen -->
 <div class="project">
-  <div class="project-inner">
-    <div class="project-text">
-      <h3>PUP</h3>
-      <div class="meta">Branding — 2023</div>
-      <div class="desc">Playful visual identity.</div>
-    </div>
-    <div class="media-flow">
-      <div class="media-item"><img src="assets/pup_1.jpg"></div>
-      <div class="media-item"><img src="assets/pup_2.jpg"></div>
-      <div class="media-item"><img src="assets/pup_3.jpg"></div>
-    </div>
-  </div>
+<div class="project-inner">
+<div class="project-text">
+<h3>Pupchen</h3>
+<div class="meta">Communication Director & Content Manager — 2023/08/17 – 2023/10/31</div>
+<div class="desc">Developed content strategy, managed social media and produced visual content.</div>
+</div>
+<div class="media-flow">
+<video controls src="assets/pup_content_1.mp4"></video>
+<img src="assets/pup_dejeuner_1.jpg">
+<video controls src="assets/pup_dejeuner_2.mp4"></video>
+<img src="assets/pup_dejeuner_3.jpg">
+<video controls src="assets/pup_launching_1.mp4"></video>
+<video controls src="assets/pup_launching_2.mp4"></video>
+<video controls src="assets/pup_launching_3.mp4"></video>
+</div>
+</div>
 </div>
 
 <!-- Southtown -->
 <div class="project">
-  <div class="project-inner">
-    <div class="project-text">
-      <h3>Southtown</h3>
-      <div class="meta">Art Direction — 2022</div>
-      <div class="desc">Urban visual exploration.</div>
-    </div>
-    <div class="media-flow">
-      <div class="media-item"><img src="assets/southtown_1.jpg"></div>
-      <div class="media-item"><img src="assets/southtown_2.jpg"></div>
-      <div class="media-item"><img src="assets/southtown_3.jpg"></div>
-    </div>
-  </div>
+<div class="project-inner">
+<div class="project-text">
+<h3>Southtown Rage — Fijo</h3>
+<div class="meta">Art Director — 2024/07/05 – 2024/12/22</div>
+<div class="desc">Art direction for the album and music videos. Creative universe, visuals and on-set artistic supervision.</div>
+</div>
+<div class="media-flow">
+<img src="assets/st_presentation.png"><img src="assets/st_d_1.png">
+<img src="assets/st_d_2.png"><img src="assets/st_d_3.png">
+<img src="assets/st_d_5.png"><img src="assets/st_d_7.png">
+<img src="assets/southtown_tshirts.png">
+</div>
+</div>
 </div>
 
 <!-- MDL -->
 <div class="project">
-  <div class="project-inner">
-    <div class="project-text">
-      <h3>MDL</h3>
-      <div class="meta">Editorial Design</div>
-      <div class="desc">Minimal typographic system.</div>
-    </div>
-    <div class="media-flow">
-      <div class="media-item"><img src="assets/mdl_1.jpg"></div>
-      <div class="media-item"><img src="assets/mdl_2.jpg"></div>
-    </div>
-  </div>
+<div class="project-inner">
+<div class="project-text">
+<h3>Maison de la Lumière</h3>
+<div class="meta">Graphic Designer & Content Director — 2024/02 – 2025/01</div>
+<div class="desc">Created the visual identity and brand guidelines. Led communication strategy and content creation.</div>
+</div>
+<div class="media-flow">
+<video controls src="assets/mdl_1.mp4"></video>
+<img src="assets/mdl_2.jpg"><img src="assets/mdl_3.jpg"><img src="assets/mdl_logo.png">
+</div>
+</div>
 </div>
 
 <!-- SFG -->
 <div class="project">
-  <div class="project-inner">
-    <div class="project-text">
-      <h3>SFG</h3>
-      <div class="meta">Graphic Design</div>
-      <div class="desc">Experimental visual language.</div>
-    </div>
-    <div class="media-flow">
-      <div class="media-item"><img src="assets/sfg_1.jpg"></div>
-      <div class="media-item"><img src="assets/sfg_2.jpg"></div>
-    </div>
-  </div>
+<div class="project-inner">
+<div class="project-text">
+<h3>Selma Feriani Gallery</h3>
+<div class="meta">Graphic Design — 2024 – ongoing</div>
+<div class="desc">Design and layout of exhibition brochures and an artist monograph.</div>
+</div>
+<div class="media-flow">
+<img src="assets/sfg_b_2.png"><img src="assets/sfg_b_3.png">
+<img src="assets/sfg_m.png"><img src="assets/sfg_m2.png">
+</div>
+</div>
 </div>
 
-<!-- LaM -->
+<!-- La Maison -->
 <div class="project">
-  <div class="project-inner">
-    <div class="project-text">
-      <h3>LaM</h3>
-      <div class="meta">Brand Identity</div>
-      <div class="desc">Cultural branding project.</div>
-    </div>
-    <div class="media-flow">
-      <div class="media-item"><img src="assets/lam_1.jpg"></div>
-      <div class="media-item"><img src="assets/lam_2.jpg"></div>
-    </div>
-  </div>
+<div class="project-inner">
+<div class="project-text">
+<h3>La Maison</h3>
+<div class="meta">Graphic Designer & Content Manager — 2021/2023</div>
+<div class="desc">Brand rework, graphic content production and communication management.</div>
+</div>
+<div class="media-flow">
+<img src="assets/lam_1.jpg"><img src="assets/lam_2.jpg">
+<video controls src="assets/lam_3.mp4"></video>
+<img src="assets/lam_design_1.png">
+</div>
+</div>
 </div>
 
 </section>
 
-<section id="about" class="section about">
+<section id="about" class="section">
 <h2 class="section-title">About</h2>
-<p>Born in 1998 in Sfax, Tunisia. I work through emotion, movement and research.</p>
+<p>Born in 1998 in Sfax, Tunisia. I explore design movements and emotional research through iterative experimentation.</p>
 </section>
 
-<section id="contact" class="section contact">
+<section id="contact" class="section">
 <h2 class="section-title">Contact</h2>
 <p>Email: <a href="mailto:benamarrina@gmail.com">benamarrina@gmail.com</a></p>
-<p>
-<img src="assets/linkedin_grey.png" style="width:18px;vertical-align:middle">
-<a href="https://www.linkedin.com/in/rina-ben-amar-41687717b/" target="_blank">LinkedIn</a>
-</p>
 </section>
 
-<footer>© Rina Ben Amar</footer>
-
 </main>
+
 </body>
 </html>
-
