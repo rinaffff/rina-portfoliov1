@@ -10,7 +10,7 @@
 
     /* ── TOKENS ── */
     :root {
-      --peach:      #FAF6F0; /* Background Hue requested */
+      --peach:      #FAF6F0; /* Perfect requested hue */
       --peach-mid:  #F2ECE1;
       --espresso:   #351E28;
       --plum:       #5B1E32;
@@ -90,7 +90,7 @@
     }
     .hero-img-bg {
       position:absolute; inset:0;
-      background-image:url('https://rinaffff.github.io/rina-portfolio/assets/r_background.png');
+      background-image:url('https://rinaffff.github.io/rina-portfoliov1/assets/r_background.png');
       background-size:cover; background-position:center;
       opacity:.07; pointer-events:none;
     }
@@ -199,6 +199,7 @@
     .gallery { display:grid; gap:.65rem; }
     .g-2col  { grid-template-columns:1fr 1fr; }
     .g-asym  { grid-template-columns:5fr 3fr; }
+    .g-3col  { grid-template-columns:1fr 1fr 1fr; }
 
     .gi { display:block; width:100%; object-fit:cover; transition:transform .7s var(--ease),filter .4s; filter:saturate(.9) brightness(.98); }
     .gi:hover { transform:scale(1.025); filter:saturate(1.08) brightness(1.01); }
@@ -272,7 +273,7 @@
       .hero-foot { margin-left:1rem; }
       .project { grid-template-columns:1fr; padding:3rem 1.4rem; }
       .proj-num { display:none; }
-      .g-2col,.g-asym,.vid-grid { grid-template-columns:1fr; }
+      .g-2col,.g-asym,.g-3col,.vid-grid { grid-template-columns:1fr; }
       .gi-wide { grid-column:auto; }
       .contact-inner { grid-template-columns:1fr; }
       .statement-inner { grid-template-columns:1fr; }
@@ -387,10 +388,10 @@
       </div>
 
       <div class="gallery g-2col">
-        <img class="gi gi-tall" src="https://rinaffff.github.io/rina-portfolio/assets/sfg_b_2.png"  alt="Selma Feriani Gallery — desktop identity" loading="lazy" />
+        <img class="gi gi-tall" src="https://rinaffff.github.io/rina-portfoliov1/assets/sfg_b_2.png"  alt="Selma Feriani Gallery — desktop identity" loading="lazy" />
         <div class="gi-stack">
-          <img class="gi gi-std" src="https://rinaffff.github.io/rina-portfolio/assets/sfg_m.png"   alt="Selma Feriani Gallery — mobile view" loading="lazy" />
-          <img class="gi gi-std" src="https://rinaffff.github.io/rina-portfolio/assets/sfg_m2.png"  alt="Selma Feriani Gallery — mobile detail" loading="lazy" />
+          <img class="gi gi-std" src="https://rinaffff.github.io/rina-portfoliov1/assets/sfg_m.png"   alt="Selma Feriani Gallery — mobile view" loading="lazy" />
+          <img class="gi gi-std" src="https://rinaffff.github.io/rina-portfoliov1/assets/sfg_m2.png"  alt="Selma Feriani Gallery — mobile detail" loading="lazy" />
         </div>
       </div>
     </article>
@@ -415,28 +416,28 @@
       </div>
 
       <div class="gallery g-asym">
-        <img class="gi gi-tall"  src="https://rinaffff.github.io/rina-portfolio/assets/hog_design_1.jpg"  alt="House of Goddesses — brand identity" loading="lazy" />
+        <img class="gi gi-tall"  src="https://rinaffff.github.io/rina-portfoliov1/assets/hog_design_1.jpg"  alt="House of Goddesses — brand identity" loading="lazy" />
         <div class="gi-stack">
-          <img class="gi gi-sq"  src="https://rinaffff.github.io/rina-portfolio/assets/hog_logo_1.png"    alt="House of Goddesses — logotype" loading="lazy" />
-          <img class="gi gi-sq"  src="https://rinaffff.github.io/rina-portfolio/assets/hog_logo_2.png"    alt="House of Goddesses — logo variant" loading="lazy" />
+          <img class="gi gi-sq"  src="https://rinaffff.github.io/rina-portfoliov1/assets/hog_logo_1.png"    alt="House of Goddesses — logotype" loading="lazy" />
+          <img class="gi gi-sq"  src="https://rinaffff.github.io/rina-portfoliov1/assets/hog_logo_2.png"    alt="House of Goddesses — logo variant" loading="lazy" />
         </div>
-        <img class="gi gi-wide"  src="https://rinaffff.github.io/rina-portfolio/assets/hog_design_2.jpg"  alt="House of Goddesses — campaign spread" loading="lazy" />
-        <img class="gi gi-std"   src="https://rinaffff.github.io/rina-portfolio/assets/hog_design_3.jpg"  alt="House of Goddesses — identity detail" loading="lazy" />
-        <img class="gi gi-3to2"  src="https://rinaffff.github.io/rina-portfolio/assets/hog_design_4.jpg"  alt="House of Goddesses — packaging" loading="lazy" />
+        <img class="gi gi-wide"  src="https://rinaffff.github.io/rina-portfoliov1/assets/hog_design_2.jpg"  alt="House of Goddesses — campaign spread" loading="lazy" />
+        <img class="gi gi-std"   src="https://rinaffff.github.io/rina-portfoliov1/assets/hog_design_3.jpg"  alt="House of Goddesses — identity detail" loading="lazy" />
+        <img class="gi gi-3to2"  src="https://rinaffff.github.io/rina-portfoliov1/assets/hog_design_4.jpg"  alt="House of Goddesses — packaging" loading="lazy" />
       </div>
 
-      <!-- VIDEO GRID -->
+      <!-- VIDEO GRID WITH EXACT CAPTURED FILE NAMES -->
       <div class="vid-grid" style="grid-column:1/-1; margin-top:.65rem;">
         <div class="vid-wrap">
-          <video src="https://rinaffff.github.io/rina-portfolio/assets/hog_vid_1.mp4" autoplay muted loop playsinline aria-label="House of Goddesses — motion 1"></video>
+          <video src="https://rinaffff.github.io/rina-portfoliov1/assets/hog_vid_1.mp4" autoplay muted loop playsinline aria-label="House of Goddesses — motion 1"></video>
           <span class="vid-label">Motion 01</span>
         </div>
         <div class="vid-wrap">
-          <video src="https://rinaffff.github.io/rina-portfolio/assets/hog_vid_2.mp4" autoplay muted loop playsinline aria-label="House of Goddesses — motion 2"></video>
+          <video src="https://rinaffff.github.io/rina-portfoliov1/assets/hog_vid_2.mp4" autoplay muted loop playsinline aria-label="House of Goddesses — motion 2"></video>
           <span class="vid-label">Motion 02</span>
         </div>
         <div class="vid-wrap">
-          <video src="https://rinaffff.github.io/rina-portfolio/assets/hog_vid_3.mp4" autoplay muted loop playsinline aria-label="House of Goddesses — motion 3"></video>
+          <video src="https://rinaffff.github.io/rina-portfoliov1/assets/hog_vid_3.mp4" autoplay muted loop playsinline aria-label="House of Goddesses — motion 3"></video>
           <span class="vid-label">Motion 03</span>
         </div>
       </div>
@@ -462,16 +463,16 @@
       </div>
 
       <div class="gallery g-2col">
-        <img class="gi gi-std"  src="https://rinaffff.github.io/rina-portfolio/assets/st_d_1.png"            alt="Southtown Rage — identity system" loading="lazy" />
-        <img class="gi gi-std"  src="https://rinaffff.github.io/rina-portfolio/assets/st_d_2.png"            alt="Southtown Rage — graphic detail" loading="lazy" />
-        <img class="gi gi-std"  src="https://rinaffff.github.io/rina-portfolio/assets/st_d_3.png"            alt="Southtown Rage — colour study" loading="lazy" />
-        <img class="gi gi-std"  src="https://rinaffff.github.io/rina-portfolio/assets/st_d_5.png"            alt="Southtown Rage — detail 5" loading="lazy" />
-        <img class="gi gi-std"  src="https://rinaffff.github.io/rina-portfolio/assets/st_d_7.png"            alt="Southtown Rage — detail 7" loading="lazy" />
-        <img class="gi gi-wide" src="https://rinaffff.github.io/rina-portfolio/assets/southtown_tshirts.png" alt="Southtown Rage merchandise" loading="lazy" />
+        <img class="gi gi-std"  src="https://rinaffff.github.io/rina-portfoliov1/assets/st_d_1.png"            alt="Southtown Rage — identity system" loading="lazy" />
+        <img class="gi gi-std"  src="https://rinaffff.github.io/rina-portfoliov1/assets/st_d_2.png"            alt="Southtown Rage — graphic detail" loading="lazy" />
+        <img class="gi gi-std"  src="https://rinaffff.github.io/rina-portfoliov1/assets/st_d_3.png"            alt="Southtown Rage — colour study" loading="lazy" />
+        <img class="gi gi-std"  src="https://rinaffff.github.io/rina-portfoliov1/assets/st_d_5.png"            alt="Southtown Rage — detail 5" loading="lazy" />
+        <img class="gi gi-std"  src="https://rinaffff.github.io/rina-portfoliov1/assets/st_d_7.png"            alt="Southtown Rage — detail 7" loading="lazy" />
+        <img class="gi gi-wide" src="https://rinaffff.github.io/rina-portfoliov1/assets/southtown_tshirts.png" alt="Southtown Rage merchandise" loading="lazy" />
       </div>
     </article>
 
-    <!-- 04 — PUPCHEN (LUXURY FOOTWEAR) -->
+    <!-- 04 — PUPCHEN (LUXURY FOOTWEAR WITH EXACT ASSET NAMES FROM CAPTURE) -->
     <article class="project">
       <div class="proj-num">〇四</div>
 
@@ -490,15 +491,29 @@
         <p class="proj-role">Role — Creative Director &amp; Digital Strategist</p>
       </div>
 
-      <div class="gallery g-2col">
-        <img class="gi gi-tall" src="https://rinaffff.github.io/rina-portfolio/assets/pup_design_1.jpg" alt="Pupchen Footwear Architecture & Branding" loading="lazy" />
-        <div class="gi-stack">
-          <img class="gi gi-sq" src="https://rinaffff.github.io/rina-portfolio/assets/pup_logo.png" alt="Pupchen Emblem" loading="lazy" />
+      <div class="gallery g-asym">
+        <img class="gi gi-tall" src="https://rinaffff.github.io/rina-portfoliov1/assets/pup_dejeuner_1.jpg" alt="Pupchen Dejeuner" loading="lazy" />
+        <img class="gi gi-std"  src="https://rinaffff.github.io/rina-portfoliov1/assets/pup_dejeuner_3.jpg" alt="Pupchen Campaign" loading="lazy" />
+      </div>
+
+      <!-- PUPCHEN MOTION FROM YOUR ASSETS -->
+      <div class="vid-grid" style="grid-column:1/-1; margin-top:.65rem;">
+        <div class="vid-wrap">
+          <video src="https://rinaffff.github.io/rina-portfoliov1/assets/pup_content_1.mp4" autoplay muted loop playsinline aria-label="Pupchen content motion"></video>
+          <span class="vid-label">Content Motion</span>
+        </div>
+        <div class="vid-wrap">
+          <video src="https://rinaffff.github.io/rina-portfoliov1/assets/pup_launching_1.mp4" autoplay muted loop playsinline aria-label="Pupchen launch motion 1"></video>
+          <span class="vid-label">Launch 01</span>
+        </div>
+        <div class="vid-wrap">
+          <video src="https://rinaffff.github.io/rina-portfoliov1/assets/pup_launching_2.mp4" autoplay muted loop playsinline aria-label="Pupchen launch motion 2"></video>
+          <span class="vid-label">Launch 02</span>
         </div>
       </div>
     </article>
 
-    <!-- 05 — BUCK N' BREW -->
+    <!-- 05 — BUCK N' BREW (EXACT FILE NAMES BB-1.jpg TO BB-6.jpg FROM CAPTURE) -->
     <article class="project">
       <div class="proj-num">〇五</div>
 
@@ -517,9 +532,13 @@
         <p class="proj-role">Role — Lead Branding Designer</p>
       </div>
 
-      <div class="gallery g-2col">
-        <img class="gi gi-std" src="https://rinaffff.github.io/rina-portfolio/assets/BB_identity.jpg" alt="Buck n Brew Identity" loading="lazy" />
-        <img class="gi gi-std" src="https://rinaffff.github.io/rina-portfolio/assets/BB_packaging.jpg" alt="Buck n Brew Packaging" loading="lazy" />
+      <div class="gallery g-3col">
+        <img class="gi gi-std" src="https://rinaffff.github.io/rina-portfoliov1/assets/BB-1.jpg" alt="Buck n Brew 1" loading="lazy" />
+        <img class="gi gi-std" src="https://rinaffff.github.io/rina-portfoliov1/assets/BB-2.jpg" alt="Buck n Brew 2" loading="lazy" />
+        <img class="gi gi-std" src="https://rinaffff.github.io/rina-portfoliov1/assets/BB-3.jpg" alt="Buck n Brew 3" loading="lazy" />
+        <img class="gi gi-std" src="https://rinaffff.github.io/rina-portfoliov1/assets/BB-4.jpg" alt="Buck n Brew 4" loading="lazy" />
+        <img class="gi gi-std" src="https://rinaffff.github.io/rina-portfoliov1/assets/BB-5.jpg" alt="Buck n Brew 5" loading="lazy" />
+        <img class="gi gi-std" src="https://rinaffff.github.io/rina-portfoliov1/assets/BB-6.jpg" alt="Buck n Brew 6" loading="lazy" />
       </div>
     </article>
   </section>
