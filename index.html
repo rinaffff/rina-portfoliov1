@@ -171,13 +171,14 @@
     .work-title { font-family:var(--f-disp); font-size:clamp(3rem,7vw,7rem); font-weight:400; font-style:italic; line-height:.9; }
     .work-title span { display:block; font-family:var(--f-hand); font-style:normal; font-size:clamp(1.1rem,2.5vw,2.5rem); color:var(--pink); margin-top:.4rem; }
 
-    /* ── PROJECT ── */
+    /* ── PROJECT (GRID WITH SIDE-BY-SIDE SIDEBAR & MEDIA) ── */
     .project {
       padding:5rem 3.5rem;
       border-top:1px solid var(--line);
       display:grid;
-      grid-template-columns:80px 300px 1fr;
-      gap:4rem;
+      grid-template-columns:60px 320px 1fr;
+      gap:3.5rem;
+      align-items:start;
       opacity:0; transform:translateY(40px);
       transition:opacity .9s var(--ease),transform .9s var(--ease);
     }
@@ -195,39 +196,75 @@
     .proj-concept { font-size:.79rem; color:var(--espresso); line-height:1.9; margin-bottom:1.6rem; padding-left:1rem; border-left:2px solid var(--pink); }
     .proj-role    { font-size:.58rem; letter-spacing:.2em; text-transform:uppercase; color:var(--olive); }
 
-    /* ── GALLERIES ── */
-    .gallery { display:grid; gap:.65rem; }
-    .g-2col  { grid-template-columns:1fr 1fr; }
-    .g-asym  { grid-template-columns:5fr 3fr; }
-    .g-3col  { grid-template-columns:repeat(3, 1fr); }
-    .g-4col-a4 { grid-template-columns:repeat(4, 1fr); }
+    /* ── GALLERIES & STACKING ── */
+    .gallery-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      width: 100%;
+    }
 
-    .gi { display:block; width:100%; object-fit:cover; transition:transform .7s var(--ease),filter .4s; filter:saturate(.9) brightness(.98); }
-    .gi:hover { transform:scale(1.025); filter:saturate(1.08) brightness(1.01); }
-    .gi-std  { aspect-ratio:4/3; }
-    .gi-tall { aspect-ratio:2/3; }
-    .gi-a4   { aspect-ratio:1/1.414; } /* A4 Proportion */
-    .gi-wide { aspect-ratio:16/9; grid-column:1/-1; }
-    .gi-sq   { aspect-ratio:1/1; }
-    .gi-3to2 { aspect-ratio:3/2; }
-    .gi-stack { display:flex; flex-direction:column; gap:.65rem; }
+    .gi-box {
+      width: 100%;
+      background: rgba(53, 30, 40, .02);
+      border: 1px solid var(--line-lt);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: .8rem;
+      overflow: hidden;
+    }
 
-    /* ── VIDEO ── */
-    .vid-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:.65rem; grid-column:1/-1; }
+    .gi {
+      display: block;
+      max-width: 100%;
+      max-height: 400px;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      transition: transform .6s var(--ease), filter .4s;
+      filter: saturate(.92) brightness(.99);
+    }
+    .gi:hover {
+      transform: scale(1.02);
+      filter: saturate(1.05) brightness(1);
+    }
+
+    .gi-stack-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 0.8rem;
+      width: 100%;
+    }
+
+    /* ── SMALLER RESIZED VIDEOS (NEXT TO TITLE) ── */
+    .vid-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      width: 100%;
+    }
     .vid-wrap {
-      position:relative; aspect-ratio:9/16; overflow:hidden;
-      background:var(--espresso);
+      position: relative;
+      aspect-ratio: 9/16;
+      max-width: 180px;
+      max-height: 320px;
+      overflow: hidden;
+      background: var(--espresso);
+      flex: 1 1 140px;
     }
     .vid-wrap video {
-      width:100%; height:100%; object-fit:cover;
-      transition:transform .7s var(--ease);
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .7s var(--ease);
     }
-    .vid-wrap:hover video { transform:scale(1.03); }
+    .vid-wrap:hover video { transform: scale(1.03); }
     .vid-label {
-      position:absolute; bottom:.7rem; left:.8rem;
-      font-size:.55rem; letter-spacing:.22em; text-transform:uppercase;
-      color:rgba(255,240,210,.55);
-      pointer-events:none;
+      position: absolute; bottom: .5rem; left: .6rem;
+      font-size: .5rem; letter-spacing: .2em; text-transform: uppercase;
+      color: rgba(255, 240, 210, .65);
+      pointer-events: none;
     }
 
     /* ── CONTACT ── */
@@ -265,9 +302,9 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width:1100px) {
-      .project { grid-template-columns:60px 1fr; }
+      .project { grid-template-columns:40px 280px 1fr; gap:2rem; }
     }
-    @media (max-width:768px) {
+    @media (max-width:850px) {
       nav { padding:1.4rem; }
       .nav-links { display:none; }
       #hero,.work-header,#contact,footer { padding-left:1.4rem; padding-right:1.4rem; }
@@ -275,8 +312,8 @@
       .hero-foot { margin-left:1rem; }
       .project { grid-template-columns:1fr; padding:3rem 1.4rem; }
       .proj-num { display:none; }
-      .g-2col,.g-asym,.g-3col,.g-4col-a4,.vid-grid { grid-template-columns:1fr; }
-      .gi-wide { grid-column:auto; }
+      .vid-grid, .gi-stack-row { grid-template-columns:1fr; }
+      .vid-wrap { max-width:100%; max-height:380px; }
       .contact-inner { grid-template-columns:1fr; }
       .statement-inner { grid-template-columns:1fr; }
       .statement-jp { display:none; }
@@ -389,16 +426,22 @@
         <p class="proj-role">Role — Visual Designer</p>
       </div>
 
-      <div class="gallery g-2col">
-        <img class="gi gi-tall" src="https://rinaffff.github.io/rina-portfoliov1/assets/sfg_b_2.png"  alt="Selma Feriani Gallery — desktop identity" loading="lazy" />
-        <div class="gi-stack">
-          <img class="gi gi-std" src="https://rinaffff.github.io/rina-portfoliov1/assets/sfg_m.png"   alt="Selma Feriani Gallery — mobile view" loading="lazy" />
-          <img class="gi gi-std" src="https://rinaffff.github.io/rina-portfoliov1/assets/sfg_m2.png"  alt="Selma Feriani Gallery — mobile detail" loading="lazy" />
+      <div class="gallery-container">
+        <div class="gi-box">
+          <img class="gi" src="https://rinaffff.github.io/rina-portfoliov1/assets/sfg_b_2.png" alt="Selma Feriani Gallery — desktop identity" loading="lazy" />
+        </div>
+        <div class="gi-stack-row">
+          <div class="gi-box">
+            <img class="gi" src="https://rinaffff.github.io/rina-portfoliov1/assets/sfg_m.png" alt="Selma Feriani Gallery — mobile view" loading="lazy" />
+          </div>
+          <div class="gi-box">
+            <img class="gi" src="https://rinaffff.github.io/rina-portfoliov1/assets/sfg_m2.png" alt="Selma Feriani Gallery — mobile detail" loading="lazy" />
+          </div>
         </div>
       </div>
     </article>
 
-    <!-- 02 — HOUSE OF GODDESSES (REMOVED hog_design_1) -->
+    <!-- 02 — HOUSE OF GODDESSES -->
     <article class="project">
       <div class="proj-num">〇二</div>
 
@@ -417,33 +460,44 @@
         <p class="proj-role">Role — Art Director &amp; Designer</p>
       </div>
 
-      <div class="gallery g-asym">
-        <img class="gi gi-wide"  src="https://rinaffff.github.io/rina-portfoliov1/assets/hog_design_2.jpg"  alt="House of Goddesses — campaign spread" loading="lazy" />
-        <div class="gi-stack">
-          <img class="gi gi-sq"  src="https://rinaffff.github.io/rina-portfoliov1/assets/hog_logo_1.png"    alt="House of Goddesses — logotype" loading="lazy" />
-          <img class="gi gi-sq"  src="https://rinaffff.github.io/rina-portfoliov1/assets/hog_logo_2.png"    alt="House of Goddesses — logo variant" loading="lazy" />
+      <div class="gallery-container">
+        <div class="gi-box">
+          <img class="gi" src="https://rinaffff.github.io/rina-portfoliov1/assets/hog_design_2.jpg" alt="House of Goddesses — campaign spread" loading="lazy" />
         </div>
-        <img class="gi gi-std"   src="https://rinaffff.github.io/rina-portfoliov1/assets/hog_design_3.jpg"  alt="House of Goddesses — identity detail" loading="lazy" />
-        <img class="gi gi-3to2"  src="https://rinaffff.github.io/rina-portfoliov1/assets/hog_design_4.jpg"  alt="House of Goddesses — packaging" loading="lazy" />
-      </div>
-
-      <div class="vid-grid" style="grid-column:1/-1; margin-top:.65rem;">
-        <div class="vid-wrap">
-          <video src="https://rinaffff.github.io/rina-portfoliov1/assets/hog_vid_1.mp4" autoplay muted loop playsinline aria-label="House of Goddesses — motion 1"></video>
-          <span class="vid-label">Motion 01</span>
+        <div class="gi-stack-row">
+          <div class="gi-box">
+            <img class="gi" src="https://rinaffff.github.io/rina-portfoliov1/assets/hog_logo_1.png" alt="House of Goddesses — logotype" loading="lazy" />
+          </div>
+          <div class="gi-box">
+            <img class="gi" src="https://rinaffff.github.io/rina-portfoliov1/assets/hog_logo_2.png" alt="House of Goddesses — logo variant" loading="lazy" />
+          </div>
         </div>
-        <div class="vid-wrap">
-          <video src="https://rinaffff.github.io/rina-portfoliov1/assets/hog_vid_2.mp4" autoplay muted loop playsinline aria-label="House of Goddesses — motion 2"></video>
-          <span class="vid-label">Motion 02</span>
+        <div class="gi-stack-row">
+          <div class="gi-box">
+            <img class="gi" src="https://rinaffff.github.io/rina-portfoliov1/assets/hog_design_3.jpg" alt="House of Goddesses — identity detail" loading="lazy" />
+          </div>
+          <div class="gi-box">
+            <img class="gi" src="https://rinaffff.github.io/rina-portfoliov1/assets/hog_design_4.jpg" alt="House of Goddesses — packaging" loading="lazy" />
+          </div>
         </div>
-        <div class="vid-wrap">
-          <video src="https://rinaffff.github.io/rina-portfoliov1/assets/hog_vid_3.mp4" autoplay muted loop playsinline aria-label="House of Goddesses — motion 3"></video>
-          <span class="vid-label">Motion 03</span>
+        <div class="vid-grid">
+          <div class="vid-wrap">
+            <video src="https://rinaffff.github.io/rina-portfoliov1/assets/hog_vid_1.mp4" autoplay muted loop playsinline aria-label="House of Goddesses — motion 1"></video>
+            <span class="vid-label">Motion 01</span>
+          </div>
+          <div class="vid-wrap">
+            <video src="https://rinaffff.github.io/rina-portfoliov1/assets/hog_vid_2.mp4" autoplay muted loop playsinline aria-label="House of Goddesses — motion 2"></video>
+            <span class="vid-label">Motion 02</span>
+          </div>
+          <div class="vid-wrap">
+            <video src="https://rinaffff.github.io/rina-portfoliov1/assets/hog_vid_3.mp4" autoplay muted loop playsinline aria-label="House of Goddesses — motion 3"></video>
+            <span class="vid-label">Motion 03</span>
+          </div>
         </div>
       </div>
     </article>
 
-    <!-- 03 — SOUTHTOWN RAGE (REMOVED st_d_1, DISPLAYED AS A4 VIGNETTES) -->
+    <!-- 03 — SOUTHTOWN RAGE -->
     <article class="project">
       <div class="proj-num">〇三</div>
 
@@ -462,18 +516,28 @@
         <p class="proj-role">Role — Creative Director</p>
       </div>
 
-      <div class="gallery g-2col">
-        <div class="gallery g-4col-a4" style="grid-column: 1 / -1;">
-          <img class="gi gi-a4" src="https://rinaffff.github.io/rina-portfoliov1/assets/st_d_2.png" alt="Southtown Rage — A4 detail 2" loading="lazy" />
-          <img class="gi gi-a4" src="https://rinaffff.github.io/rina-portfoliov1/assets/st_d_3.png" alt="Southtown Rage — A4 detail 3" loading="lazy" />
-          <img class="gi gi-a4" src="https://rinaffff.github.io/rina-portfoliov1/assets/st_d_5.png" alt="Southtown Rage — A4 detail 5" loading="lazy" />
-          <img class="gi gi-a4" src="https://rinaffff.github.io/rina-portfoliov1/assets/st_d_7.png" alt="Southtown Rage — A4 detail 7" loading="lazy" />
+      <div class="gallery-container">
+        <div class="gi-stack-row">
+          <div class="gi-box">
+            <img class="gi" src="https://rinaffff.github.io/rina-portfoliov1/assets/st_d_2.png" alt="Southtown Rage — Detail 2" loading="lazy" />
+          </div>
+          <div class="gi-box">
+            <img class="gi" src="https://rinaffff.github.io/rina-portfoliov1/assets/st_d_3.png" alt="Southtown Rage — Detail 3" loading="lazy" />
+          </div>
+          <div class="gi-box">
+            <img class="gi" src="https://rinaffff.github.io/rina-portfoliov1/assets/st_d_5.png" alt="Southtown Rage — Detail 5" loading="lazy" />
+          </div>
+          <div class="gi-box">
+            <img class="gi" src="https://rinaffff.github.io/rina-portfoliov1/assets/st_d_7.png" alt="Southtown Rage — Detail 7" loading="lazy" />
+          </div>
         </div>
-        <img class="gi gi-wide" src="https://rinaffff.github.io/rina-portfoliov1/assets/southtown_tshirts.png" alt="Southtown Rage merchandise" loading="lazy" style="margin-top:.65rem;" />
+        <div class="gi-box">
+          <img class="gi" src="https://rinaffff.github.io/rina-portfoliov1/assets/southtown_tshirts.png" alt="Southtown Rage merchandise" loading="lazy" />
+        </div>
       </div>
     </article>
 
-    <!-- 04 — PUPCHEN (REMOVED pup_dejeuner_1 & pup_dejeuner_3) -->
+    <!-- 04 — PUPCHEN (COMPACT VIDEOS NEXT TO TITLE) -->
     <article class="project">
       <div class="proj-num">〇四</div>
 
@@ -492,23 +556,25 @@
         <p class="proj-role">Role — Creative Director &amp; Digital Strategist</p>
       </div>
 
-      <div class="vid-grid" style="grid-column:1/-1;">
-        <div class="vid-wrap">
-          <video src="https://rinaffff.github.io/rina-portfoliov1/assets/pup_content_1.mp4" autoplay muted loop playsinline aria-label="Pupchen content motion"></video>
-          <span class="vid-label">Content Motion</span>
-        </div>
-        <div class="vid-wrap">
-          <video src="https://rinaffff.github.io/rina-portfoliov1/assets/pup_launching_1.mp4" autoplay muted loop playsinline aria-label="Pupchen launch motion 1"></video>
-          <span class="vid-label">Launch 01</span>
-        </div>
-        <div class="vid-wrap">
-          <video src="https://rinaffff.github.io/rina-portfoliov1/assets/pup_launching_2.mp4" autoplay muted loop playsinline aria-label="Pupchen launch motion 2"></video>
-          <span class="vid-label">Launch 02</span>
+      <div class="gallery-container">
+        <div class="vid-grid">
+          <div class="vid-wrap">
+            <video src="https://rinaffff.github.io/rina-portfoliov1/assets/pup_content_1.mp4" autoplay muted loop playsinline aria-label="Pupchen content motion"></video>
+            <span class="vid-label">Content Motion</span>
+          </div>
+          <div class="vid-wrap">
+            <video src="https://rinaffff.github.io/rina-portfoliov1/assets/pup_launching_1.mp4" autoplay muted loop playsinline aria-label="Pupchen launch motion 1"></video>
+            <span class="vid-label">Launch 01</span>
+          </div>
+          <div class="vid-wrap">
+            <video src="https://rinaffff.github.io/rina-portfoliov1/assets/pup_launching_2.mp4" autoplay muted loop playsinline aria-label="Pupchen launch motion 2"></video>
+            <span class="vid-label">Launch 02</span>
+          </div>
         </div>
       </div>
     </article>
 
-    <!-- 05 — BUCK N' BREW (UPDATED CAPTION + INCLUDED 3D INTERIOR DESIGN) -->
+    <!-- 05 — BUCK N' BREW -->
     <article class="project">
       <div class="proj-num">〇五</div>
 
@@ -527,13 +593,17 @@
         <p class="proj-role">Role — Lead Branding &amp; 3D Designer</p>
       </div>
 
-      <div class="gallery g-3col">
-        <img class="gi gi-std" src="https://rinaffff.github.io/rina-portfoliov1/assets/BB-1.jpg" alt="Buck n Brew 1 - 3D Render & Brand" loading="lazy" />
-        <img class="gi gi-std" src="https://rinaffff.github.io/rina-portfoliov1/assets/BB-2.jpg" alt="Buck n Brew 2 - Interior Concept" loading="lazy" />
-        <img class="gi gi-std" src="https://rinaffff.github.io/rina-portfoliov1/assets/BB-3.jpg" alt="Buck n Brew 3 - Spatial Layout" loading="lazy" />
-        <img class="gi gi-std" src="https://rinaffff.github.io/rina-portfoliov1/assets/BB-4.jpg" alt="Buck n Brew 4 - Packaging" loading="lazy" />
-        <img class="gi gi-std" src="https://rinaffff.github.io/rina-portfoliov1/assets/BB-5.jpg" alt="Buck n Brew 5 - Identity Details" loading="lazy" />
-        <img class="gi gi-std" src="https://rinaffff.github.io/rina-portfoliov1/assets/BB-6.jpg" alt="Buck n Brew 6 - Branding System" loading="lazy" />
+      <div class="gallery-container">
+        <div class="gi-stack-row">
+          <div class="gi-box"><img class="gi" src="https://rinaffff.github.io/rina-portfoliov1/assets/BB-1.jpg" alt="Buck n Brew 1" loading="lazy" /></div>
+          <div class="gi-box"><img class="gi" src="https://rinaffff.github.io/rina-portfoliov1/assets/BB-2.jpg" alt="Buck n Brew 2" loading="lazy" /></div>
+          <div class="gi-box"><img class="gi" src="https://rinaffff.github.io/rina-portfoliov1/assets/BB-3.jpg" alt="Buck n Brew 3" loading="lazy" /></div>
+        </div>
+        <div class="gi-stack-row">
+          <div class="gi-box"><img class="gi" src="https://rinaffff.github.io/rina-portfoliov1/assets/BB-4.jpg" alt="Buck n Brew 4" loading="lazy" /></div>
+          <div class="gi-box"><img class="gi" src="https://rinaffff.github.io/rina-portfoliov1/assets/BB-5.jpg" alt="Buck n Brew 5" loading="lazy" /></div>
+          <div class="gi-box"><img class="gi" src="https://rinaffff.github.io/rina-portfoliov1/assets/BB-6.jpg" alt="Buck n Brew 6" loading="lazy" /></div>
+        </div>
       </div>
     </article>
   </section>
