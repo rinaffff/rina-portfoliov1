@@ -171,7 +171,7 @@
     .work-title { font-family:var(--f-disp); font-size:clamp(3rem,7vw,7rem); font-weight:400; font-style:italic; line-height:.9; }
     .work-title span { display:block; font-family:var(--f-hand); font-style:normal; font-size:clamp(1.1rem,2.5vw,2.5rem); color:var(--pink); margin-top:.4rem; }
 
-    /* ── PROJECT (GRID WITH SIDE-BY-SIDE SIDEBAR & MEDIA) ── */
+    /* ── PROJECT ── */
     .project {
       padding:5rem 3.5rem;
       border-top:1px solid var(--line);
@@ -196,7 +196,7 @@
     .proj-concept { font-size:.79rem; color:var(--espresso); line-height:1.9; margin-bottom:1.6rem; padding-left:1rem; border-left:2px solid var(--pink); }
     .proj-role    { font-size:.58rem; letter-spacing:.2em; text-transform:uppercase; color:var(--olive); }
 
-    /* ── GALLERIES & STACKING ── */
+    /* ── GALLERIES ── */
     .gallery-container {
       display: flex;
       flex-direction: column;
@@ -218,7 +218,7 @@
     .gi {
       display: block;
       max-width: 100%;
-      max-height: 400px;
+      max-height: 420px;
       width: auto;
       height: auto;
       object-fit: contain;
@@ -237,7 +237,14 @@
       width: 100%;
     }
 
-    /* ── SMALLER RESIZED VIDEOS (NEXT TO TITLE) ── */
+    .g-4col-a4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.8rem;
+      width: 100%;
+    }
+
+    /* ── VIDEOS ── */
     .vid-grid {
       display: flex;
       flex-wrap: wrap;
@@ -247,11 +254,11 @@
     .vid-wrap {
       position: relative;
       aspect-ratio: 9/16;
-      max-width: 180px;
-      max-height: 320px;
+      max-width: 240px;
+      max-height: 420px;
       overflow: hidden;
       background: var(--espresso);
-      flex: 1 1 140px;
+      flex: 1 1 180px;
     }
     .vid-wrap video {
       width: 100%;
@@ -312,8 +319,8 @@
       .hero-foot { margin-left:1rem; }
       .project { grid-template-columns:1fr; padding:3rem 1.4rem; }
       .proj-num { display:none; }
-      .vid-grid, .gi-stack-row { grid-template-columns:1fr; }
-      .vid-wrap { max-width:100%; max-height:380px; }
+      .vid-grid, .gi-stack-row, .g-4col-a4 { grid-template-columns:1fr; }
+      .vid-wrap { max-width:100%; max-height:420px; }
       .contact-inner { grid-template-columns:1fr; }
       .statement-inner { grid-template-columns:1fr; }
       .statement-jp { display:none; }
@@ -461,9 +468,6 @@
       </div>
 
       <div class="gallery-container">
-        <div class="gi-box">
-          <img class="gi" src="https://rinaffff.github.io/rina-portfoliov1/assets/hog_design_2.jpg" alt="House of Goddesses — campaign spread" loading="lazy" />
-        </div>
         <div class="gi-stack-row">
           <div class="gi-box">
             <img class="gi" src="https://rinaffff.github.io/rina-portfoliov1/assets/hog_logo_1.png" alt="House of Goddesses — logotype" loading="lazy" />
@@ -517,19 +521,11 @@
       </div>
 
       <div class="gallery-container">
-        <div class="gi-stack-row">
-          <div class="gi-box">
-            <img class="gi" src="https://rinaffff.github.io/rina-portfoliov1/assets/st_d_2.png" alt="Southtown Rage — Detail 2" loading="lazy" />
-          </div>
-          <div class="gi-box">
-            <img class="gi" src="https://rinaffff.github.io/rina-portfoliov1/assets/st_d_3.png" alt="Southtown Rage — Detail 3" loading="lazy" />
-          </div>
-          <div class="gi-box">
-            <img class="gi" src="https://rinaffff.github.io/rina-portfoliov1/assets/st_d_5.png" alt="Southtown Rage — Detail 5" loading="lazy" />
-          </div>
-          <div class="gi-box">
-            <img class="gi" src="https://rinaffff.github.io/rina-portfoliov1/assets/st_d_7.png" alt="Southtown Rage — Detail 7" loading="lazy" />
-          </div>
+        <div class="g-4col-a4">
+          <div class="gi-box"><img class="gi" src="https://rinaffff.github.io/rina-portfoliov1/assets/st_d_2.png" alt="Southtown Rage — Detail 2" loading="lazy" /></div>
+          <div class="gi-box"><img class="gi" src="https://rinaffff.github.io/rina-portfoliov1/assets/st_d_3.png" alt="Southtown Rage — Detail 3" loading="lazy" /></div>
+          <div class="gi-box"><img class="gi" src="https://rinaffff.github.io/rina-portfoliov1/assets/st_d_5.png" alt="Southtown Rage — Detail 5" loading="lazy" /></div>
+          <div class="gi-box"><img class="gi" src="https://rinaffff.github.io/rina-portfoliov1/assets/st_d_7.png" alt="Southtown Rage — Detail 7" loading="lazy" /></div>
         </div>
         <div class="gi-box">
           <img class="gi" src="https://rinaffff.github.io/rina-portfoliov1/assets/southtown_tshirts.png" alt="Southtown Rage merchandise" loading="lazy" />
@@ -537,7 +533,7 @@
       </div>
     </article>
 
-    <!-- 04 — PUPCHEN (COMPACT VIDEOS NEXT TO TITLE) -->
+    <!-- 04 — PUPCHEN (CORRECTED TYPOGRAPHY) -->
     <article class="project">
       <div class="proj-num">〇四</div>
 
