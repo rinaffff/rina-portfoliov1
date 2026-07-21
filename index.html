@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,10 +7,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,300;0,6..96,400;0,6..96,500;1,6..96,300;1,6..96,400;1,6..96,500&family=IM+Fell+English:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400&family=Noto+Serif+JP:wght@200;300;400&family=Caveat:wght@400;500&display=swap" rel="stylesheet" />
   <style>
-    /* TOKENS */
+
+    /* ── TOKENS ── */
     :root {
-      --peach:      #FFF9ED;
-      --peach-mid:  #FBF2DE;
+      --peach:      #FAF6F0; /* Background Hue requested */
+      --peach-mid:  #F2ECE1;
       --espresso:   #351E28;
       --plum:       #5B1E32;
       --plum-soft:  #4D3449;
@@ -41,6 +41,7 @@
       overflow-x:hidden;
     }
 
+    /* grain overlay */
     body::after {
       content:'';
       position:fixed; inset:0;
@@ -48,7 +49,7 @@
       opacity:.036; pointer-events:none; z-index:9000;
     }
 
-    /* CURSOR */
+    /* ── CURSOR ── */
     #cursor {
       position:fixed; width:9px; height:9px;
       background:var(--pink); border-radius:50%;
@@ -66,7 +67,7 @@
       transition:left .14s var(--ease),top .14s var(--ease);
     }
 
-    /* NAV */
+    /* ── NAV ── */
     nav {
       position:fixed; inset:0 0 auto; z-index:500;
       padding:1.8rem 3.5rem;
@@ -80,7 +81,7 @@
     .nav-links a { font-size:.63rem; letter-spacing:.24em; text-transform:uppercase; text-decoration:none; color:var(--plum-soft); transition:color .3s; }
     .nav-links a:hover { color:var(--pink); }
 
-    /* HERO */
+    /* ── HERO ── */
     #hero {
       min-height:100vh;
       padding:0 3.5rem 3rem;
@@ -145,7 +146,7 @@
     .scroll-line   { display:block; width:0; height:1px; background:var(--pink); animation:grow 1.2s var(--ease) 1.5s forwards; }
     @keyframes grow { to { width:48px; } }
 
-    /* STATEMENT BAND */
+    /* ── STATEMENT BAND ── */
     .statement-band {
       background:linear-gradient(135deg,var(--plum),var(--espresso));
       padding:4.5rem 3.5rem; position:relative; overflow:hidden;
@@ -155,7 +156,7 @@
     .statement-text em { font-style:normal; color:var(--mint); }
     .statement-jp { font-family:var(--f-jp); font-size:.7rem; font-weight:200; letter-spacing:.38em; color:var(--mint); opacity:.5; writing-mode:vertical-rl; white-space:nowrap; }
 
-    /* MARQUEE */
+    /* ── MARQUEE ── */
     .marquee-wrap { overflow:hidden; border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:1.1rem 0; background:var(--peach-mid); }
     .marquee-track { display:flex; gap:3rem; white-space:nowrap; animation:marquee 22s linear infinite; }
     .marquee-item  { display:flex; align-items:center; gap:3rem; flex-shrink:0; }
@@ -164,13 +165,13 @@
     .m-dot { width:4px; height:4px; border-radius:50%; background:var(--pink); opacity:.38; flex-shrink:0; }
     @keyframes marquee { to { transform:translateX(-50%); } }
 
-    /* WORK */
+    /* ── WORK ── */
     #work { border-top:1px solid var(--line); }
     .work-header { padding:4rem 3.5rem 5.5rem; display:flex; justify-content:space-between; align-items:flex-end; }
     .work-title { font-family:var(--f-disp); font-size:clamp(3rem,7vw,7rem); font-weight:400; font-style:italic; line-height:.9; }
     .work-title span { display:block; font-family:var(--f-hand); font-style:normal; font-size:clamp(1.1rem,2.5vw,2.5rem); color:var(--pink); margin-top:.4rem; }
 
-    /* PROJECT */
+    /* ── PROJECT ── */
     .project {
       padding:5rem 3.5rem;
       border-top:1px solid var(--line);
@@ -194,7 +195,7 @@
     .proj-concept { font-size:.79rem; color:var(--espresso); line-height:1.9; margin-bottom:1.6rem; padding-left:1rem; border-left:2px solid var(--pink); }
     .proj-role    { font-size:.58rem; letter-spacing:.2em; text-transform:uppercase; color:var(--olive); }
 
-    /* GALLERIES */
+    /* ── GALLERIES ── */
     .gallery { display:grid; gap:.65rem; }
     .g-2col  { grid-template-columns:1fr 1fr; }
     .g-asym  { grid-template-columns:5fr 3fr; }
@@ -208,7 +209,7 @@
     .gi-3to2 { aspect-ratio:3/2; }
     .gi-stack { display:flex; flex-direction:column; gap:.65rem; }
 
-    /* VIDEO INTEGRATION FROM OLD CODE */
+    /* ── VIDEO ── */
     .vid-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:.65rem; grid-column:1/-1; }
     .vid-wrap {
       position:relative; aspect-ratio:9/16; overflow:hidden;
@@ -226,7 +227,7 @@
       pointer-events:none;
     }
 
-    /* CONTACT */
+    /* ── CONTACT ── */
     #contact { background:linear-gradient(135deg,var(--plum),var(--espresso)); padding:10rem 3.5rem; position:relative; overflow:hidden; }
     #contact::before {
       content:'ご連絡'; position:absolute; right:1rem; bottom:-2rem;
@@ -246,12 +247,12 @@
     .contact-mail { display:inline-block; font-family:var(--f-disp); font-size:clamp(1rem,1.8vw,1.4rem); font-weight:400; color:var(--peach); text-decoration:none; border-bottom:1px solid rgba(255,240,210,.25); padding-bottom:.22rem; transition:color .3s,border-color .3s; }
     .contact-mail:hover { color:var(--pink); border-color:var(--pink); }
 
-    /* FOOTER */
+    /* ── FOOTER ── */
     footer { background:var(--plum); padding:1.8rem 3.5rem; display:flex; justify-content:space-between; align-items:center; }
     .f-copy { font-size:.58rem; letter-spacing:.22em; text-transform:uppercase; color:rgba(255,240,210,.38); }
     .f-jp   { font-family:var(--f-jp); font-size:.56rem; font-weight:200; letter-spacing:.3em; color:var(--mint); opacity:.42; }
 
-    /* ANIMATIONS */
+    /* ── ANIMATIONS ── */
     @keyframes up { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:translateY(0); } }
     .reveal { opacity:0; transform:translateY(30px); transition:opacity .9s var(--ease),transform .9s var(--ease); }
     .reveal.d1 { transition-delay:.1s; }
@@ -259,7 +260,7 @@
     .reveal.d3 { transition-delay:.3s; }
     .reveal.in { opacity:1; transform:translateY(0); }
 
-    /* RESPONSIVE */
+    /* ── RESPONSIVE ── */
     @media (max-width:1100px) {
       .project { grid-template-columns:60px 1fr; }
     }
@@ -424,7 +425,7 @@
         <img class="gi gi-3to2"  src="https://rinaffff.github.io/rina-portfolio/assets/hog_design_4.jpg"  alt="House of Goddesses — packaging" loading="lazy" />
       </div>
 
-      <!-- EXACT VIDEO EMBED FROM OLD CODE -->
+      <!-- VIDEO GRID -->
       <div class="vid-grid" style="grid-column:1/-1; margin-top:.65rem;">
         <div class="vid-wrap">
           <video src="https://rinaffff.github.io/rina-portfolio/assets/hog_vid_1.mp4" autoplay muted loop playsinline aria-label="House of Goddesses — motion 1"></video>
@@ -469,31 +470,59 @@
         <img class="gi gi-wide" src="https://rinaffff.github.io/rina-portfolio/assets/southtown_tshirts.png" alt="Southtown Rage merchandise" loading="lazy" />
       </div>
     </article>
-  </section>
 
-  <!-- HIDDEN ARCHIVE STRUCTURE (Mapped to all Resume Experiences: Pupchen, Buck n' Brew, Arken El Harb, La Maison) -->
-  <div style="display:none;" aria-hidden="true">
-    <article>
-      <h3>Pupchen — Luxury Footwear Brand (US & Italy)</h3>
-      <p>Reimagined visual identity with an editorial spirit. Pioneered social media launch strategies for cohesive digital narrative storytelling.</p>
-      <img src="https://rinaffff.github.io/rina-portfolio/assets/pup_design_1.jpg" alt="Pupchen Footwear Architecture" />
-      <img src="https://rinaffff.github.io/rina-portfolio/assets/pup_logo.png" alt="Pupchen Logo" />
+    <!-- 04 — PUPCHEN (LUXURY FOOTWEAR) -->
+    <article class="project">
+      <div class="proj-num">〇四</div>
+
+      <div class="proj-meta">
+        <p class="proj-client">Pupchen · International Luxury Footwear (US & Italy)</p>
+        <h3 class="proj-name">Pupchen<br>Shoes</h3>
+        <span class="proj-name-jp">ププチェン・シューズ</span>
+        <div class="proj-tags">
+          <span class="tag">Brand Direction</span>
+          <span class="tag">Editorial Strategy</span>
+          <span class="tag">Digital Content</span>
+          <span class="tag">Footwear Design</span>
+        </div>
+        <p class="proj-brief">Reimagining the visual identity and digital narrative for a high-end international footwear brand. Strategic goal: Elevate product perception beyond traditional luxury standards.</p>
+        <p class="proj-concept">Pioneered social media launch strategies and editorial storytelling systems, ensuring absolute brand consistency across digital ecosystems in the US and Europe.</p>
+        <p class="proj-role">Role — Creative Director &amp; Digital Strategist</p>
+      </div>
+
+      <div class="gallery g-2col">
+        <img class="gi gi-tall" src="https://rinaffff.github.io/rina-portfolio/assets/pup_design_1.jpg" alt="Pupchen Footwear Architecture & Branding" loading="lazy" />
+        <div class="gi-stack">
+          <img class="gi gi-sq" src="https://rinaffff.github.io/rina-portfolio/assets/pup_logo.png" alt="Pupchen Emblem" loading="lazy" />
+        </div>
+      </div>
     </article>
-    <article>
-      <h3>Buck n' Brew — Coffee Shop Branding</h3>
-      <p>Sculpted client vision into a warm-intellectual coffee shop identity with custom graphic elements and packaging.</p>
-      <img src="https://rinaffff.github.io/rina-portfolio/assets/BB_identity.jpg" alt="Buck n Brew Identity" />
-      <img src="https://rinaffff.github.io/rina-portfolio/assets/BB_packaging.jpg" alt="Buck n Brew Packaging" />
+
+    <!-- 05 — BUCK N' BREW -->
+    <article class="project">
+      <div class="proj-num">〇五</div>
+
+      <div class="proj-meta">
+        <p class="proj-client">Buck n' Brew · Specialty Coffee Concept</p>
+        <h3 class="proj-name">Buck n'<br>Brew</h3>
+        <span class="proj-name-jp">バック・アンド・ブルー</span>
+        <div class="proj-tags">
+          <span class="tag">Brand Identity</span>
+          <span class="tag">Packaging</span>
+          <span class="tag">Concept Creation</span>
+          <span class="tag">Graphic Assets</span>
+        </div>
+        <p class="proj-brief">Comprehensive identity and packaging design for an artisanal coffee shop. Challenge: Sculpt client aspirations into a tangible, warm, and intellectually driven coffee experience.</p>
+        <p class="proj-concept">Designed custom matte packaging and unified graphical elements that communicate craftsmanship and elevate daily consumer interaction.</p>
+        <p class="proj-role">Role — Lead Branding Designer</p>
+      </div>
+
+      <div class="gallery g-2col">
+        <img class="gi gi-std" src="https://rinaffff.github.io/rina-portfolio/assets/BB_identity.jpg" alt="Buck n Brew Identity" loading="lazy" />
+        <img class="gi gi-std" src="https://rinaffff.github.io/rina-portfolio/assets/BB_packaging.jpg" alt="Buck n Brew Packaging" loading="lazy" />
+      </div>
     </article>
-    <article>
-      <h3>Arken El Harb — Lead Production Designer</h3>
-      <p>Shaped the artistic soul of national television series, managing sets, costumes, and visual framing under strict production timelines.</p>
-    </article>
-    <article>
-      <h3>La Maison — Creative Lead & Content Manager</h3>
-      <p>Sustained complete brand identity and content ecosystem independently for over three years.</p>
-    </article>
-  </div>
+  </section>
 
   <!-- CONTACT -->
   <section id="contact">
