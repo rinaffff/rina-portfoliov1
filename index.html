@@ -196,7 +196,7 @@
     .proj-concept { font-size:.79rem; color:var(--espresso); line-height:1.9; margin-bottom:1.6rem; padding-left:1rem; border-left:2px solid var(--pink); }
     .proj-role    { font-size:.58rem; letter-spacing:.2em; text-transform:uppercase; color:var(--olive); }
 
-    /* ── GALLERIES ── */
+    /* ── GALLERIES (NO FRAMES/BACKGROUNDS) ── */
     .gallery-container {
       display: flex;
       flex-direction: column;
@@ -206,12 +206,9 @@
 
     .gi-box {
       width: 100%;
-      background: rgba(53, 30, 40, .02);
-      border: 1px solid var(--line-lt);
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: .8rem;
       overflow: hidden;
     }
 
@@ -244,7 +241,7 @@
       width: 100%;
     }
 
-    /* ── VIDEOS (FULL WIDTH, MATCHED SECTION RATIO) ── */
+    /* ── VIDEOS (NO FRAMES) ── */
     .vid-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -256,8 +253,6 @@
       aspect-ratio: 9/16;
       width: 100%;
       overflow: hidden;
-      background: var(--espresso);
-      border: 1px solid var(--line-lt);
     }
     .vid-wrap video {
       width: 100%;
@@ -269,8 +264,9 @@
     .vid-label {
       position: absolute; bottom: .5rem; left: .6rem;
       font-size: .5rem; letter-spacing: .2em; text-transform: uppercase;
-      color: rgba(255, 240, 210, .65);
+      color: rgba(255, 240, 210, .85);
       pointer-events: none;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.4);
     }
 
     /* ── CONTACT ── */
