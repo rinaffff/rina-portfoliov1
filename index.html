@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,11 +8,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,300;0,6..96,400;0,6..96,500;1,6..96,300;1,6..96,400;1,6..96,500&family=IM+Fell+English:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400&family=Noto+Serif+JP:wght@200;300;400&family=Caveat:wght@400;500&display=swap" rel="stylesheet" />
   <style>
-
-    /* ── TOKENS ── */
+    /* TOKENS */
     :root {
-      --peach:      #FFF0D2;
-      --peach-mid:  #F5E4C0;
+      --peach:      #FFF9ED;
+      --peach-mid:  #FBF2DE;
       --espresso:   #351E28;
       --plum:       #5B1E32;
       --plum-soft:  #4D3449;
@@ -41,7 +41,6 @@
       overflow-x:hidden;
     }
 
-    /* grain overlay */
     body::after {
       content:'';
       position:fixed; inset:0;
@@ -49,7 +48,7 @@
       opacity:.036; pointer-events:none; z-index:9000;
     }
 
-    /* ── CURSOR ── */
+    /* CURSOR */
     #cursor {
       position:fixed; width:9px; height:9px;
       background:var(--pink); border-radius:50%;
@@ -67,7 +66,7 @@
       transition:left .14s var(--ease),top .14s var(--ease);
     }
 
-    /* ── NAV ── */
+    /* NAV */
     nav {
       position:fixed; inset:0 0 auto; z-index:500;
       padding:1.8rem 3.5rem;
@@ -81,14 +80,13 @@
     .nav-links a { font-size:.63rem; letter-spacing:.24em; text-transform:uppercase; text-decoration:none; color:var(--plum-soft); transition:color .3s; }
     .nav-links a:hover { color:var(--pink); }
 
-    /* ── HERO ── */
+    /* HERO */
     #hero {
       min-height:100vh;
       padding:0 3.5rem 3rem;
       display:grid; grid-template-rows:1fr auto;
       position:relative; overflow:hidden;
     }
-    /* verified filename: r_background.png */
     .hero-img-bg {
       position:absolute; inset:0;
       background-image:url('https://rinaffff.github.io/rina-portfolio/assets/r_background.png');
@@ -147,7 +145,7 @@
     .scroll-line   { display:block; width:0; height:1px; background:var(--pink); animation:grow 1.2s var(--ease) 1.5s forwards; }
     @keyframes grow { to { width:48px; } }
 
-    /* ── STATEMENT BAND ── */
+    /* STATEMENT BAND */
     .statement-band {
       background:linear-gradient(135deg,var(--plum),var(--espresso));
       padding:4.5rem 3.5rem; position:relative; overflow:hidden;
@@ -157,26 +155,7 @@
     .statement-text em { font-style:normal; color:var(--mint); }
     .statement-jp { font-family:var(--f-jp); font-size:.7rem; font-weight:200; letter-spacing:.38em; color:var(--mint); opacity:.5; writing-mode:vertical-rl; white-space:nowrap; }
 
-    /* ── ABOUT ── */
-    #about { padding:9rem 3.5rem; display:grid; grid-template-columns:240px 1fr; gap:5.5rem; }
-    .section-label { font-size:.6rem; letter-spacing:.3em; text-transform:uppercase; color:var(--pink); padding-top:.5rem; }
-    .about-h2 { font-family:var(--f-disp); font-size:clamp(1.7rem,3vw,2.8rem); font-weight:300; line-height:1.3; margin-bottom:2rem; }
-    .about-h2 em { font-style:italic; color:var(--rose); }
-    .about-body { font-family:var(--f-ser); font-size:.9rem; font-style:italic; color:var(--plum-soft); line-height:2; max-width:560px; margin-bottom:3rem; }
-
-    .jp-pill-row { display:flex; flex-wrap:wrap; gap:.55rem; margin-bottom:3rem; }
-    .jp-pill { display:flex; flex-direction:column; align-items:center; gap:.22rem; border:1px solid var(--line); padding:.65rem 1.1rem; background:rgba(203,67,139,.035); transition:border-color .3s; }
-    .jp-pill:hover { border-color:var(--pink); }
-    .jp-pill-jp { font-family:var(--f-jp); font-size:.82rem; font-weight:300; color:var(--espresso); letter-spacing:.12em; }
-    .jp-pill-en { font-size:.53rem; letter-spacing:.2em; text-transform:uppercase; color:var(--pink); }
-
-    .influences-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:.4rem; }
-    .infl-item { border:1px solid var(--line-lt); padding:.65rem .85rem; transition:border-color .3s,background .3s; }
-    .infl-item:hover { border-color:var(--pink); background:rgba(203,67,139,.035); }
-    .infl-cat  { font-size:.52rem; letter-spacing:.22em; text-transform:uppercase; color:var(--pink); margin-bottom:.22rem; }
-    .infl-name { font-family:var(--f-disp); font-size:.76rem; font-weight:400; color:var(--espresso); line-height:1.5; }
-
-    /* ── MARQUEE ── */
+    /* MARQUEE */
     .marquee-wrap { overflow:hidden; border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:1.1rem 0; background:var(--peach-mid); }
     .marquee-track { display:flex; gap:3rem; white-space:nowrap; animation:marquee 22s linear infinite; }
     .marquee-item  { display:flex; align-items:center; gap:3rem; flex-shrink:0; }
@@ -185,13 +164,13 @@
     .m-dot { width:4px; height:4px; border-radius:50%; background:var(--pink); opacity:.38; flex-shrink:0; }
     @keyframes marquee { to { transform:translateX(-50%); } }
 
-    /* ── WORK ── */
+    /* WORK */
     #work { border-top:1px solid var(--line); }
     .work-header { padding:4rem 3.5rem 5.5rem; display:flex; justify-content:space-between; align-items:flex-end; }
     .work-title { font-family:var(--f-disp); font-size:clamp(3rem,7vw,7rem); font-weight:400; font-style:italic; line-height:.9; }
     .work-title span { display:block; font-family:var(--f-hand); font-style:normal; font-size:clamp(1.1rem,2.5vw,2.5rem); color:var(--pink); margin-top:.4rem; }
 
-    /* ── PROJECT ── */
+    /* PROJECT */
     .project {
       padding:5rem 3.5rem;
       border-top:1px solid var(--line);
@@ -215,11 +194,10 @@
     .proj-concept { font-size:.79rem; color:var(--espresso); line-height:1.9; margin-bottom:1.6rem; padding-left:1rem; border-left:2px solid var(--pink); }
     .proj-role    { font-size:.58rem; letter-spacing:.2em; text-transform:uppercase; color:var(--olive); }
 
-    /* ── GALLERIES ── */
+    /* GALLERIES */
     .gallery { display:grid; gap:.65rem; }
     .g-2col  { grid-template-columns:1fr 1fr; }
     .g-asym  { grid-template-columns:5fr 3fr; }
-    .g-3col  { grid-template-columns:1fr 1fr 1fr; }
 
     .gi { display:block; width:100%; object-fit:cover; transition:transform .7s var(--ease),filter .4s; filter:saturate(.9) brightness(.98); }
     .gi:hover { transform:scale(1.025); filter:saturate(1.08) brightness(1.01); }
@@ -230,7 +208,7 @@
     .gi-3to2 { aspect-ratio:3/2; }
     .gi-stack { display:flex; flex-direction:column; gap:.65rem; }
 
-    /* ── VIDEO ── */
+    /* VIDEO INTEGRATION FROM OLD CODE */
     .vid-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:.65rem; grid-column:1/-1; }
     .vid-wrap {
       position:relative; aspect-ratio:9/16; overflow:hidden;
@@ -248,22 +226,7 @@
       pointer-events:none;
     }
 
-    /* ── COMING SOON ── */
-    .coming-wrap {
-      border:1px solid var(--line);
-      aspect-ratio:4/3; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1.2rem;
-      position:relative; overflow:hidden;
-      background:rgba(203,67,139,.025); grid-column:1/-1;
-    }
-    .coming-wrap::before {
-      content:'間'; position:absolute;
-      font-family:var(--f-jp); font-size:16rem; font-weight:200;
-      color:rgba(203,67,139,.045); pointer-events:none;
-    }
-    .coming-label { font-size:.6rem; letter-spacing:.3em; text-transform:uppercase; color:var(--pink); opacity:.6; position:relative; }
-    .coming-title { font-family:var(--f-disp); font-style:italic; font-size:1.6rem; color:var(--espresso); opacity:.3; position:relative; }
-
-    /* ── CONTACT ── */
+    /* CONTACT */
     #contact { background:linear-gradient(135deg,var(--plum),var(--espresso)); padding:10rem 3.5rem; position:relative; overflow:hidden; }
     #contact::before {
       content:'ご連絡'; position:absolute; right:1rem; bottom:-2rem;
@@ -283,12 +246,12 @@
     .contact-mail { display:inline-block; font-family:var(--f-disp); font-size:clamp(1rem,1.8vw,1.4rem); font-weight:400; color:var(--peach); text-decoration:none; border-bottom:1px solid rgba(255,240,210,.25); padding-bottom:.22rem; transition:color .3s,border-color .3s; }
     .contact-mail:hover { color:var(--pink); border-color:var(--pink); }
 
-    /* ── FOOTER ── */
+    /* FOOTER */
     footer { background:var(--plum); padding:1.8rem 3.5rem; display:flex; justify-content:space-between; align-items:center; }
     .f-copy { font-size:.58rem; letter-spacing:.22em; text-transform:uppercase; color:rgba(255,240,210,.38); }
     .f-jp   { font-family:var(--f-jp); font-size:.56rem; font-weight:200; letter-spacing:.3em; color:var(--mint); opacity:.42; }
 
-    /* ── ANIMATIONS ── */
+    /* ANIMATIONS */
     @keyframes up { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:translateY(0); } }
     .reveal { opacity:0; transform:translateY(30px); transition:opacity .9s var(--ease),transform .9s var(--ease); }
     .reveal.d1 { transition-delay:.1s; }
@@ -296,25 +259,23 @@
     .reveal.d3 { transition-delay:.3s; }
     .reveal.in { opacity:1; transform:translateY(0); }
 
-    /* ── RESPONSIVE ── */
+    /* RESPONSIVE */
     @media (max-width:1100px) {
       .project { grid-template-columns:60px 1fr; }
     }
     @media (max-width:768px) {
       nav { padding:1.4rem; }
       .nav-links { display:none; }
-      #hero,#about,.work-header,#contact,footer { padding-left:1.4rem; padding-right:1.4rem; }
+      #hero,.work-header,#contact,footer { padding-left:1.4rem; padding-right:1.4rem; }
       .hero-center { padding-left:1rem; }
       .hero-foot { margin-left:1rem; }
-      #about { grid-template-columns:1fr; gap:2rem; padding-top:5rem; padding-bottom:5rem; }
       .project { grid-template-columns:1fr; padding:3rem 1.4rem; }
       .proj-num { display:none; }
-      .g-2col,.g-asym,.g-3col,.vid-grid { grid-template-columns:1fr; }
+      .g-2col,.g-asym,.vid-grid { grid-template-columns:1fr; }
       .gi-wide { grid-column:auto; }
       .contact-inner { grid-template-columns:1fr; }
       .statement-inner { grid-template-columns:1fr; }
       .statement-jp { display:none; }
-      .influences-grid { grid-template-columns:1fr 1fr; }
       footer { flex-direction:column; gap:.4rem; text-align:center; }
     }
   </style>
@@ -324,9 +285,7 @@
   <div id="cursor"></div>
   <div id="cursor-ring"></div>
 
-  <!-- ════════════════════════════════════
-       NAV
-  ════════════════════════════════════ -->
+  <!-- NAV -->
   <nav>
     <a href="#" class="logo">
       <span class="logo-en">Rina Benamar</span>
@@ -334,15 +293,11 @@
     </a>
     <ul class="nav-links">
       <li><a href="#work">作品 / Work</a></li>
-      <li><a href="#about">About</a></li>
       <li><a href="#contact">連絡 / Contact</a></li>
     </ul>
   </nav>
 
-  <!-- ════════════════════════════════════
-       HERO
-       ✅ r_background.png — confirmed
-  ════════════════════════════════════ -->
+  <!-- HERO -->
   <section id="hero">
     <div class="hero-img-bg" aria-hidden="true"></div>
     <div class="hero-bg-jp" aria-hidden="true">世界</div>
@@ -357,7 +312,7 @@
         visuals.
       </h1>
       <div class="hero-sub">
-        <p class="hero-tagline">Designing at the intersection of surrealist poetry, organic luxury &amp; cultural edge.</p>
+        <p class="hero-tagline">Designing at the intersection of avant-garde narrative, organic luxury &amp; cultural edge.</p>
         <span class="hero-jp-tag">感覚と詩で世界をつくる</span>
       </div>
     </div>
@@ -379,33 +334,6 @@
     </div>
   </div>
 
-  <!-- ════════════════════════════════════
-       ABOUT
-  ════════════════════════════════════ -->
-  <section id="about">
-    <div class="section-label reveal">哲学 / Philosophy</div>
-    <div>
-      <h2 class="about-h2 reveal">Rooted in sensation,<br>shaped by <em>culture</em>.</h2>
-      <p class="about-body reveal d1">
-        Four years across luxury cultural institutions, beauty &amp; cosmetics brands, and music identities have given me one conviction: the most powerful design is felt before it's read. Influenced by the world-building of Miyazaki, the surrealist tension of Magritte &amp; Dalí, the obsessive pattern of Kusama, and the poetic graphic tradition of Kiyochika — I approach every project as the construction of an atmosphere, not just a visual.
-      </p>
-      <div class="jp-pill-row reveal d2">
-        <div class="jp-pill"><span class="jp-pill-jp">間</span><span class="jp-pill-en">Ma — space</span></div>
-        <div class="jp-pill"><span class="jp-pill-jp">物作り</span><span class="jp-pill-en">Monozukuri — craft</span></div>
-        <div class="jp-pill"><span class="jp-pill-jp">雅</span><span class="jp-pill-en">Miyabi — elegance</span></div>
-        <div class="jp-pill"><span class="jp-pill-jp">侘び寂び</span><span class="jp-pill-en">Wabi-sabi — imperfection</span></div>
-      </div>
-      <div class="influences-grid reveal d3">
-        <div class="infl-item"><p class="infl-cat">Art</p><p class="infl-name">Dalí · Magritte<br>Kusama · Kiyochika</p></div>
-        <div class="infl-item"><p class="infl-cat">World-building</p><p class="infl-name">Miyazaki · Van Gogh<br>Monet · Hokusai</p></div>
-        <div class="infl-item"><p class="infl-cat">Creative Direction</p><p class="infl-name">Virgil Abloh<br>Pharrell · ASAP Rocky</p></div>
-        <div class="infl-item"><p class="infl-cat">Brands</p><p class="infl-name">Gentle Monster<br>Marine Serre · Jacquemus</p></div>
-        <div class="infl-item"><p class="infl-cat">Luxury</p><p class="infl-name">Louis Vuitton<br>Vivienne · Chrome Hearts</p></div>
-        <div class="infl-item"><p class="infl-cat">Beauty</p><p class="infl-name">Shiseido · Glossier<br>Colina Strada</p></div>
-      </div>
-    </div>
-  </section>
-
   <!-- MARQUEE -->
   <div class="marquee-wrap" aria-hidden="true">
     <div class="marquee-track">
@@ -419,7 +347,6 @@
         <span class="m-en">Brand World-Building</span><span class="m-dot"></span>
         <span class="m-jp">ブランドデザイン</span><span class="m-dot"></span>
       </div>
-      <!-- duplicate for seamless loop -->
       <div class="marquee-item">
         <span class="m-en">Graphic Design</span><span class="m-dot"></span>
         <span class="m-jp">グラフィックデザイン</span><span class="m-dot"></span>
@@ -433,194 +360,142 @@
     </div>
   </div>
 
-  <!-- ════════════════════════════════════
-       WORK
-  ════════════════════════════════════ -->
+  <!-- WORK -->
   <section id="work">
     <div class="work-header">
       <h2 class="work-title">Selected<span>作品集</span></h2>
     </div>
 
-    <!-- ══ 01 — SELMA FERIANI GALLERY ══
-         ✅ sfg_b_2.png
-         ✅ sfg_b_3.png
-         ✅ sfg_m.png
-         ✅ sfg_m2.png
-    -->
+    <!-- 01 — SELMA FERIANI GALLERY -->
     <article class="project">
       <div class="proj-num">〇一</div>
 
       <div class="proj-meta">
-        <p class="proj-client">Cultural Institution · London, UK</p>
+        <p class="proj-client">Cultural Institution · London, UK & Tunis, Tunisia</p>
         <h3 class="proj-name">Selma Feriani<br>Gallery</h3>
         <span class="proj-name-jp">セルマ・フェリアニ・ギャラリー</span>
         <div class="proj-tags">
           <span class="tag">Visual Identity</span>
-          <span class="tag">Art Direction</span>
           <span class="tag">Editorial Design</span>
           <span class="tag">Typography</span>
-          <span class="tag">Digital</span>
+          <span class="tag">Publishing</span>
         </div>
-        <p class="proj-brief">An identity for a gallery championing artists from North Africa and the Middle East — voices that deserve space, weight, and elegance.</p>
-        <p class="proj-concept">Restraint as respect. Generous space, rigorous typographic hierarchy, a visual language that lets the art breathe — while building unmistakable institutional authority.</p>
-        <p class="proj-role">Role — Lead Graphic Designer</p>
+        <p class="proj-brief">Comprehensive editorial layout and visual identity for a contemporary gallery championing North African and Middle Eastern artists. Challenge: Translate complex artist directives into refined institutional print layouts.</p>
+        <p class="proj-concept">Executed a 350-page monographic art book for a commissioned artist alongside exhibition pamphlets. Utilized strict grid systems and generous negative space to build elevated brand value.</p>
+        <p class="proj-role">Role — Visual Designer</p>
       </div>
 
       <div class="gallery g-2col">
-        <!-- ✅ sfg_b_2.png -->
         <img class="gi gi-tall" src="https://rinaffff.github.io/rina-portfolio/assets/sfg_b_2.png"  alt="Selma Feriani Gallery — desktop identity" loading="lazy" />
         <div class="gi-stack">
-          <!-- ✅ sfg_m.png -->
           <img class="gi gi-std" src="https://rinaffff.github.io/rina-portfolio/assets/sfg_m.png"   alt="Selma Feriani Gallery — mobile view" loading="lazy" />
-          <!-- ✅ sfg_m2.png -->
           <img class="gi gi-std" src="https://rinaffff.github.io/rina-portfolio/assets/sfg_m2.png"  alt="Selma Feriani Gallery — mobile detail" loading="lazy" />
         </div>
-        <!-- ✅ sfg_b_3.png -->
-        <img class="gi gi-wide" src="https://rinaffff.github.io/rina-portfolio/assets/sfg_b_3.png"  alt="Selma Feriani Gallery — editorial spread" loading="lazy" />
       </div>
     </article>
 
-    <!-- ══ 02 — HOUSE OF GODDESSES ══
-         ✅ hog_design_1.jpg
-         ✅ hog_design_2.jpg
-         ✅ hog_design_3.jpg
-         ✅ hog_design_4.jpg
-         ✅ hog_logo_1.png
-         ✅ hog_logo_2.png
-         ✅ hog_vid_1.mp4
-         ✅ hog_vid_2.mp4
-         ✅ hog_vid_3.mp4
-    -->
+    <!-- 02 — HOUSE OF GODDESSES -->
     <article class="project">
       <div class="proj-num">〇二</div>
 
       <div class="proj-meta">
-        <p class="proj-client">Beauty &amp; Wellness Brand</p>
+        <p class="proj-client">The House of Goddesses · Luxury Beauty Center</p>
         <h3 class="proj-name">House of<br>Goddesses</h3>
         <span class="proj-name-jp">ハウス・オブ・ゴッデセス</span>
         <div class="proj-tags">
-          <span class="tag">Brand Identity</span>
-          <span class="tag">Logo &amp; Type</span>
-          <span class="tag">Motion Graphics</span>
           <span class="tag">Art Direction</span>
-          <span class="tag">Packaging</span>
+          <span class="tag">Graphic Charter</span>
+          <span class="tag">Spatial Design</span>
+          <span class="tag">Motion Graphics</span>
         </div>
-        <p class="proj-brief">Full brand identity for an elevated beauty label built around feminine power, ritual, and mythology — from logotype to motion to packaging.</p>
-        <p class="proj-concept">The identity lives between ancient ceremony and contemporary luxury. Organic forms in tension with precise typography. Every asset designed to feel like an object of desire.</p>
-        <p class="proj-role">Role — Brand Designer &amp; Art Director</p>
+        <p class="proj-brief">Full artistic direction and complete graphic charter for a new luxury bridal beauty center. Objective: Unify physical architecture and digital touchpoints into an interconnected luxury universe.</p>
+        <p class="proj-concept">Collaborated closely with the CEO and interior architect to bridge interior design with high-converting social media visual assets and dynamic motion packages.</p>
+        <p class="proj-role">Role — Art Director &amp; Designer</p>
       </div>
 
       <div class="gallery g-asym">
-        <!-- ✅ hog_design_1.jpg -->
         <img class="gi gi-tall"  src="https://rinaffff.github.io/rina-portfolio/assets/hog_design_1.jpg"  alt="House of Goddesses — brand identity" loading="lazy" />
         <div class="gi-stack">
-          <!-- ✅ hog_logo_1.png -->
           <img class="gi gi-sq"  src="https://rinaffff.github.io/rina-portfolio/assets/hog_logo_1.png"    alt="House of Goddesses — logotype" loading="lazy" />
-          <!-- ✅ hog_logo_2.png -->
           <img class="gi gi-sq"  src="https://rinaffff.github.io/rina-portfolio/assets/hog_logo_2.png"    alt="House of Goddesses — logo variant" loading="lazy" />
         </div>
-        <!-- ✅ hog_design_2.jpg -->
         <img class="gi gi-wide"  src="https://rinaffff.github.io/rina-portfolio/assets/hog_design_2.jpg"  alt="House of Goddesses — campaign spread" loading="lazy" />
-        <!-- ✅ hog_design_3.jpg -->
         <img class="gi gi-std"   src="https://rinaffff.github.io/rina-portfolio/assets/hog_design_3.jpg"  alt="House of Goddesses — identity detail" loading="lazy" />
-        <!-- ✅ hog_design_4.jpg -->
         <img class="gi gi-3to2"  src="https://rinaffff.github.io/rina-portfolio/assets/hog_design_4.jpg"  alt="House of Goddesses — packaging" loading="lazy" />
       </div>
 
-      <!-- ✅ Motion — hog_vid_1.mp4 / hog_vid_2.mp4 / hog_vid_3.mp4 -->
+      <!-- EXACT VIDEO EMBED FROM OLD CODE -->
       <div class="vid-grid" style="grid-column:1/-1; margin-top:.65rem;">
         <div class="vid-wrap">
-          <video src="https://rinaffff.github.io/rina-portfolio/assets/hog_vid_1.mp4"
-                 autoplay muted loop playsinline
-                 aria-label="House of Goddesses — motion 1"></video>
+          <video src="https://rinaffff.github.io/rina-portfolio/assets/hog_vid_1.mp4" autoplay muted loop playsinline aria-label="House of Goddesses — motion 1"></video>
           <span class="vid-label">Motion 01</span>
         </div>
         <div class="vid-wrap">
-          <video src="https://rinaffff.github.io/rina-portfolio/assets/hog_vid_2.mp4"
-                 autoplay muted loop playsinline
-                 aria-label="House of Goddesses — motion 2"></video>
+          <video src="https://rinaffff.github.io/rina-portfolio/assets/hog_vid_2.mp4" autoplay muted loop playsinline aria-label="House of Goddesses — motion 2"></video>
           <span class="vid-label">Motion 02</span>
         </div>
         <div class="vid-wrap">
-          <video src="https://rinaffff.github.io/rina-portfolio/assets/hog_vid_3.mp4"
-                 autoplay muted loop playsinline
-                 aria-label="House of Goddesses — motion 3"></video>
+          <video src="https://rinaffff.github.io/rina-portfolio/assets/hog_vid_3.mp4" autoplay muted loop playsinline aria-label="House of Goddesses — motion 3"></video>
           <span class="vid-label">Motion 03</span>
         </div>
       </div>
     </article>
 
-    <!-- ══ 03 — SOUTHTOWN RAGE ══
-         ✅ st_d_1.png
-         ✅ st_d_2.png
-         ✅ st_d_3.png
-         ✅ st_d_5.png
-         ✅ st_d_7.png
-         ✅ st_presentation.png
-         ✅ southtown_tshirts.png
-    -->
+    <!-- 03 — SOUTHTOWN RAGE -->
     <article class="project">
       <div class="proj-num">〇三</div>
 
       <div class="proj-meta">
-        <p class="proj-client">Music &amp; Cultural Identity</p>
+        <p class="proj-client">Southtown Rage · Music Album</p>
         <h3 class="proj-name">Southtown<br>Rage — Fijo</h3>
         <span class="proj-name-jp">サウスタウン・レイジ</span>
         <div class="proj-tags">
-          <span class="tag">Visual Identity</span>
-          <span class="tag">Graphic Design</span>
-          <span class="tag">Merch &amp; Product</span>
-          <span class="tag">Cultural Branding</span>
+          <span class="tag">Creative Direction</span>
+          <span class="tag">Set Design</span>
+          <span class="tag">Video Production</span>
+          <span class="tag">Merchandise</span>
         </div>
-        <p class="proj-brief">Visual world for an emerging music collective — an identity rooted in community, raw energy, and regional pride. Built to carry a culture, not just represent it.</p>
-        <p class="proj-concept">Luxury of concept lives beyond luxury of category. Raw, confident, territorial — while achieving the visual coherence of a premium brand. Cultural edge and design rigor are not opposites.</p>
-        <p class="proj-role">Role — Lead Designer</p>
+        <p class="proj-brief">Co-direction of an immersive music video universe, location scouting, costume styling, and post-production art direction for a music collective.</p>
+        <p class="proj-concept">Measurable Impact: Strategic creative direction generated 3.8K views on the lead single (vs 500-1.6K benchmark across other album tracks), driving market recognition and audience growth.</p>
+        <p class="proj-role">Role — Creative Director</p>
       </div>
 
       <div class="gallery g-2col">
-        <!-- ✅ st_d_1.png -->
         <img class="gi gi-std"  src="https://rinaffff.github.io/rina-portfolio/assets/st_d_1.png"            alt="Southtown Rage — identity system" loading="lazy" />
-        <!-- ✅ st_d_2.png -->
         <img class="gi gi-std"  src="https://rinaffff.github.io/rina-portfolio/assets/st_d_2.png"            alt="Southtown Rage — graphic detail" loading="lazy" />
-        <!-- ✅ st_presentation.png -->
-        <img class="gi gi-wide" src="https://rinaffff.github.io/rina-portfolio/assets/st_presentation.png"   alt="Southtown Rage — full presentation" loading="lazy" />
-        <!-- ✅ st_d_3.png -->
         <img class="gi gi-std"  src="https://rinaffff.github.io/rina-portfolio/assets/st_d_3.png"            alt="Southtown Rage — colour study" loading="lazy" />
-        <!-- ✅ st_d_5.png -->
         <img class="gi gi-std"  src="https://rinaffff.github.io/rina-portfolio/assets/st_d_5.png"            alt="Southtown Rage — detail 5" loading="lazy" />
-        <!-- ✅ st_d_7.png -->
         <img class="gi gi-std"  src="https://rinaffff.github.io/rina-portfolio/assets/st_d_7.png"            alt="Southtown Rage — detail 7" loading="lazy" />
-        <!-- ✅ southtown_tshirts.png -->
-        <img class="gi gi-wide" src="https://rinaffff.github.io/rina-portfolio/assets/southtown_tshirts.png" alt="Southtown Rage — merchandise" loading="lazy" />
+        <img class="gi gi-wide" src="https://rinaffff.github.io/rina-portfolio/assets/southtown_tshirts.png" alt="Southtown Rage merchandise" loading="lazy" />
       </div>
     </article>
-
-    <!-- ══ 04 — COMING SOON ══ -->
-    <article class="project">
-      <div class="proj-num">〇四</div>
-      <div class="proj-meta">
-        <p class="proj-client">Self-Initiated / Personal</p>
-        <h3 class="proj-name">Something<br>new is coming.</h3>
-        <span class="proj-name-jp">近日公開</span>
-        <div class="proj-tags">
-          <span class="tag">In Progress</span>
-          <span class="tag">2025</span>
-          <span class="tag">Personal Work</span>
-        </div>
-        <p class="proj-brief">A self-initiated exploration of Japanese aesthetic philosophy through contemporary graphic language — influenced by Kiyochika, Kusama, and the concept of Ma.</p>
-        <p class="proj-role">Role — Creative Direction &amp; Design</p>
-      </div>
-      <div class="coming-wrap">
-        <p class="coming-label">近日公開 — Coming Soon</p>
-        <p class="coming-title">Personal Project in Progress</p>
-      </div>
-    </article>
-
   </section>
 
-  <!-- ════════════════════════════════════
-       CONTACT
-  ════════════════════════════════════ -->
+  <!-- HIDDEN ARCHIVE STRUCTURE (Mapped to all Resume Experiences: Pupchen, Buck n' Brew, Arken El Harb, La Maison) -->
+  <div style="display:none;" aria-hidden="true">
+    <article>
+      <h3>Pupchen — Luxury Footwear Brand (US & Italy)</h3>
+      <p>Reimagined visual identity with an editorial spirit. Pioneered social media launch strategies for cohesive digital narrative storytelling.</p>
+      <img src="https://rinaffff.github.io/rina-portfolio/assets/pup_design_1.jpg" alt="Pupchen Footwear Architecture" />
+      <img src="https://rinaffff.github.io/rina-portfolio/assets/pup_logo.png" alt="Pupchen Logo" />
+    </article>
+    <article>
+      <h3>Buck n' Brew — Coffee Shop Branding</h3>
+      <p>Sculpted client vision into a warm-intellectual coffee shop identity with custom graphic elements and packaging.</p>
+      <img src="https://rinaffff.github.io/rina-portfolio/assets/BB_identity.jpg" alt="Buck n Brew Identity" />
+      <img src="https://rinaffff.github.io/rina-portfolio/assets/BB_packaging.jpg" alt="Buck n Brew Packaging" />
+    </article>
+    <article>
+      <h3>Arken El Harb — Lead Production Designer</h3>
+      <p>Shaped the artistic soul of national television series, managing sets, costumes, and visual framing under strict production timelines.</p>
+    </article>
+    <article>
+      <h3>La Maison — Creative Lead & Content Manager</h3>
+      <p>Sustained complete brand identity and content ecosystem independently for over three years.</p>
+    </article>
+  </div>
+
+  <!-- CONTACT -->
   <section id="contact">
     <div class="contact-inner">
       <h2 class="contact-h2 reveal">
@@ -628,12 +503,12 @@
         <span>together.</span>
       </h2>
       <div class="contact-body reveal d1">
-        <p class="contact-intro">Open to opportunities with luxury brands, beauty houses, cultural institutions, and creative studios — particularly in Japan and internationally. Available for full-time roles and select freelance projects.</p>
+        <p class="contact-intro">Open to opportunities with luxury brands, television networks, cultural institutions, and avant-garde creative studios in Japan and internationally. Available for full-time roles and high-stakes partnerships.</p>
         <div class="contact-langs">
-          <span class="lang-tag on">French — Native</span>
-          <span class="lang-tag on">English — Fluent</span>
-          <span class="lang-tag on">日本語 — N4</span>
-          <span class="lang-tag">Arabic — Native</span>
+          <span class="lang-tag on">French - Native</span>
+          <span class="lang-tag on">English - Fluent (C1 / IELTS 7.5)</span>
+          <span class="lang-tag on">日本語 - A2 (JLPT N4 Target)</span>
+          <span class="lang-tag">Arabic - Native</span>
         </div>
         <p class="contact-jp">お気軽にご連絡ください</p>
         <a class="contact-mail" href="mailto:benamarrina@gmail.com">benamarrina@gmail.com</a>
@@ -643,35 +518,34 @@
 
   <!-- FOOTER -->
   <footer>
-    <span class="f-copy">&copy; 2025 Rina Benamar — All rights reserved</span>
-    <span class="f-jp">グラフィックデザイナー ／ アートディレクター</span>
+    <span class="f-copy">&copy; 2026 Rina Benamar - All rights reserved</span>
+    <span class="f-jp">グラフィックデザイナー / アートディレクター</span>
   </footer>
 
   <script>
     /* cursor */
-    const cur  = document.getElementById('cursor');
+    const cur = document.getElementById('cursor');
     const ring = document.getElementById('cursor-ring');
     document.addEventListener('mousemove', e => {
       cur.style.left = ring.style.left = e.clientX + 'px';
-      cur.style.top  = ring.style.top  = e.clientY + 'px';
+      cur.style.top = ring.style.top = e.clientY + 'px';
     });
-    document.querySelectorAll('a, img, video, .tag, .coming-wrap, .jp-pill, .infl-item').forEach(el => {
+    document.querySelectorAll('a, img, video, .tag, .jp-pill, .infl-item').forEach(el => {
       el.addEventListener('mouseenter', () => cur.classList.add('big'));
       el.addEventListener('mouseleave', () => cur.classList.remove('big'));
     });
 
-    /* scroll reveal — projects */
+    /* scroll reveal projects */
     const io1 = new IntersectionObserver(es => {
       es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io1.unobserve(e.target); } });
     }, { threshold: .08 });
     document.querySelectorAll('.project').forEach(el => io1.observe(el));
 
-    /* scroll reveal — generic */
+    /* scroll reveal generic */
     const io2 = new IntersectionObserver(es => {
       es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io2.unobserve(e.target); } });
     }, { threshold: .1 });
     document.querySelectorAll('.reveal').forEach(el => io2.observe(el));
   </script>
-
 </body>
 </html>
